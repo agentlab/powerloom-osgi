@@ -45,10 +45,12 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PushbackBufferedReader;
+
 import edu.isi.stella.javalib.*;
 
 public class InputStream extends Stream {
-    public java.io.PushbackInputStream nativeStream;
+    public PushbackBufferedReader nativeStream;
     public OutputStream echoStream;
     public TokenizerStreamState tokenizerState;
     /** One of :CHARACTER, :LINE or :BLOCK indicating what kind of
@@ -188,7 +190,7 @@ public class InputStream extends Stream {
         InputStream tok_inputstream_ = stream;
         OutputStream tok_echostream_ = tok_inputstream_.echoStream;
         TokenizerStreamState tok_streamstate_ = ((tok_inputstream_.tokenizerState == null) ? (tok_inputstream_.tokenizerState = TokenizerStreamState.newTokenizerStreamState()) : tok_inputstream_.tokenizerState);
-        byte[] tok_buffer_ = tok_streamstate_.buffer;
+        char[] tok_buffer_ = tok_streamstate_.buffer;
         int tok_size_ = tok_streamstate_.bufferSize;
         int tok_state_ = tok_streamstate_.getSavedState(tok_table_);
         int tok_nextstate_ = tok_state_;
@@ -468,7 +470,7 @@ public class InputStream extends Stream {
     if (inputstream.tokenizerState != null) {
       return (InputStream.readCharacterFromTokenizerBuffer(inputstream, MV_returnarray));
     }
-    { java.io.PushbackInputStream stream = inputstream.nativeStream;
+    { PushbackBufferedReader stream = inputstream.nativeStream;
       OutputStream echostream = inputstream.echoStream;
       char input = Stella.NULL_CHARACTER;
       boolean eof = false;
@@ -511,7 +513,7 @@ public class InputStream extends Stream {
         InputStream tok_inputstream_ = stream;
         OutputStream tok_echostream_ = tok_inputstream_.echoStream;
         TokenizerStreamState tok_streamstate_ = ((tok_inputstream_.tokenizerState == null) ? (tok_inputstream_.tokenizerState = TokenizerStreamState.newTokenizerStreamState()) : tok_inputstream_.tokenizerState);
-        byte[] tok_buffer_ = tok_streamstate_.buffer;
+        char[] tok_buffer_ = tok_streamstate_.buffer;
         int tok_size_ = tok_streamstate_.bufferSize;
         int tok_state_ = tok_streamstate_.getSavedState(tok_table_);
         int tok_nextstate_ = tok_state_;
@@ -690,7 +692,7 @@ public class InputStream extends Stream {
       InputStream tok_inputstream_ = stream;
       OutputStream tok_echostream_ = tok_inputstream_.echoStream;
       TokenizerStreamState tok_streamstate_ = ((tok_inputstream_.tokenizerState == null) ? (tok_inputstream_.tokenizerState = TokenizerStreamState.newTokenizerStreamState()) : tok_inputstream_.tokenizerState);
-      byte[] tok_buffer_ = tok_streamstate_.buffer;
+      char[] tok_buffer_ = tok_streamstate_.buffer;
       int tok_size_ = tok_streamstate_.bufferSize;
       int tok_state_ = tok_streamstate_.getSavedState(tok_table_);
       int tok_nextstate_ = tok_state_;
@@ -826,7 +828,7 @@ public class InputStream extends Stream {
     if (inputstream.tokenizerState != null) {
       return (InputStream.readLineFromTokenizerBuffer(inputstream));
     }
-    { java.io.PushbackInputStream stream = inputstream.nativeStream;
+    { PushbackBufferedReader stream = inputstream.nativeStream;
       OutputStream echostream = inputstream.echoStream;
       String input = null;
 
@@ -943,7 +945,7 @@ public class InputStream extends Stream {
         InputStream tok_inputstream_ = stream;
         OutputStream tok_echostream_ = tok_inputstream_.echoStream;
         TokenizerStreamState tok_streamstate_ = ((tok_inputstream_.tokenizerState == null) ? (tok_inputstream_.tokenizerState = TokenizerStreamState.newTokenizerStreamState()) : tok_inputstream_.tokenizerState);
-        byte[] tok_buffer_ = tok_streamstate_.buffer;
+        char[] tok_buffer_ = tok_streamstate_.buffer;
         int tok_size_ = tok_streamstate_.bufferSize;
         int tok_state_ = tok_streamstate_.getSavedState(tok_table_);
         int tok_nextstate_ = tok_state_;
@@ -1182,7 +1184,7 @@ public class InputStream extends Stream {
               }
             }
             else if (tok_stellalogicalstatename_ == Stella.KWD_STRING) {
-              tokencursor.content = Stella.getTokenTextInternal(tok_buffer_, tok_tokenstart_ + 1, tok_cursor_, tok_size_, false);
+              tokencursor.content = Stella.getTokenTextInternalFree(tok_buffer_, tok_tokenstart_ + 1, tok_cursor_, tok_size_, false);
               { GeneralizedSymbol testValue003 = ((GeneralizedSymbol)(tok_statenames_[tok_state_]));
 
                 if (testValue003 == Stella.KWD_STRING) {
@@ -1436,8 +1438,8 @@ public class InputStream extends Stream {
         requiredspace = inputline.length();
       }
       TokenizerStreamState.ensureTokenizerBufferSize(state, currenttokenstart, requiredspace);
-      { java.io.PushbackInputStream nativestream = stream.nativeStream;
-        byte[] buffer = state.buffer;
+      { PushbackBufferedReader nativestream = stream.nativeStream;
+        char[] buffer = state.buffer;
         int size = state.bufferSize;
         int end = state.end;
         int start = -1;
@@ -1467,7 +1469,7 @@ public class InputStream extends Stream {
 
             for (;index000 < length000; index000 = index000 + 1) {
               ch = vector000.charAt(index000);
-              buffer[end] = (byte)ch;
+              buffer[end] = (char)ch;
               end = end + 1;
               if (end == size) {
                 end = 0;
@@ -1490,7 +1492,7 @@ public class InputStream extends Stream {
    * @param out
    */
   public static void copyStreamToStream(InputStream in, OutputStream out) {
-    { byte[] buffer = new byte[Stella.$TOKENIZER_INITIAL_BUFFER_SIZE$];
+    { char[] buffer = new char[Stella.$TOKENIZER_INITIAL_BUFFER_SIZE$];
       int bytesread = 0;
 
       loop000 : for (;;) {
@@ -1551,7 +1553,7 @@ public class InputStream extends Stream {
   }
 
   public static boolean terminateInputStreamP(InputStream self) {
-    { java.io.PushbackInputStream nativeStream = self.nativeStream;
+    { PushbackBufferedReader nativeStream = self.nativeStream;
 
       if (!(nativeStream == null)) {
         try {

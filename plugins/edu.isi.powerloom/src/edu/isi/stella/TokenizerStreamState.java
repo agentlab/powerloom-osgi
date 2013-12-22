@@ -48,7 +48,7 @@ package edu.isi.stella;
 import edu.isi.stella.javalib.*;
 
 public class TokenizerStreamState extends StandardObject {
-    public byte[] buffer;
+    public char[] buffer;
     public int bufferSize;
     public int cursor;
     public int end;
@@ -68,7 +68,7 @@ public class TokenizerStreamState extends StandardObject {
       self.end = Stella.$TOKENIZER_INITIAL_BUFFER_SIZE$;
       self.cursor = Stella.$TOKENIZER_INITIAL_BUFFER_SIZE$;
       self.bufferSize = Stella.$TOKENIZER_INITIAL_BUFFER_SIZE$;
-      self.buffer = new byte[Stella.$TOKENIZER_INITIAL_BUFFER_SIZE$];
+      self.buffer = new char[Stella.$TOKENIZER_INITIAL_BUFFER_SIZE$];
       return (self);
     }
   }
@@ -212,15 +212,15 @@ public class TokenizerStreamState extends StandardObject {
       int newsize = size;
       int end = ((state.end) % size);
       int freespace = ((currenttokenstart == -1) ? size : (((end <= currenttokenstart) ? (currenttokenstart - end) : (currenttokenstart + (size - end)))));
-      byte[] buffer = state.buffer;
-      byte[] newbuffer = buffer;
+      char[] buffer = state.buffer;
+      char[] newbuffer = buffer;
 
       while (freespace < requiredspace) {
         freespace = freespace + newsize;
         newsize = newsize * 2;
       }
       if (newsize > size) {
-        newbuffer = new byte[newsize];
+        newbuffer = new char[newsize];
         if (currenttokenstart < 0) {
           state.cursor = 0;
           state.end = newsize;
@@ -232,7 +232,7 @@ public class TokenizerStreamState extends StandardObject {
 
             for (;iter000 <= upperBound000; iter000 = iter000 + 1) {
               i = iter000;
-              newbuffer[i] = (byte)(((char) (0x00ff & buffer[i])));
+              newbuffer[i] = (char)(((char) (0x00ff & buffer[i])));
             }
           }
         }
@@ -243,7 +243,7 @@ public class TokenizerStreamState extends StandardObject {
 
             for (;iter001 <= upperBound001; iter001 = iter001 + 1) {
               i = iter001;
-              newbuffer[i] = (byte)(((char) (0x00ff & buffer[i])));
+              newbuffer[i] = (char)(((char) (0x00ff & buffer[i])));
             }
           }
           { int i = Stella.NULL_INTEGER;
@@ -255,7 +255,7 @@ public class TokenizerStreamState extends StandardObject {
             for (;iter002 <= upperBound002; iter002 = iter002 + 1, iter003 = iter003 + 1) {
               i = iter002;
               j = iter003;
-              newbuffer[j] = (byte)(((char) (0x00ff & buffer[i])));
+              newbuffer[j] = (char)(((char) (0x00ff & buffer[i])));
             }
           }
           state.end = size + end;

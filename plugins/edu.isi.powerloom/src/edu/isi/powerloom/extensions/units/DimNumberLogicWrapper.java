@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom.extensions.units;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.powerloom.logic.*;
@@ -127,7 +129,7 @@ public class DimNumberLogicWrapper extends QuantityLogicWrapper {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { DimNumberLogicWrapper self = this;
 
       if (((Boolean)(Stella.$PRINTREADABLYp$.get())).booleanValue()) {

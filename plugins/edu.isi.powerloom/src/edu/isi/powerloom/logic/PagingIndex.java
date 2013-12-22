@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom.logic;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.stella.*;
@@ -84,7 +86,7 @@ public class PagingIndex extends SequenceIndex {
     }
   }
 
-  public static void printPagingIndex(PagingIndex self, java.io.PrintStream stream) {
+  public static void printPagingIndex(PagingIndex self, PrintableStringWriter stream) {
     { int limit = 10;
 
       stream.print("|PAGING-IDX|(" + self.selectionPattern);
@@ -172,7 +174,7 @@ public class PagingIndex extends SequenceIndex {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { PagingIndex self = this;
 
       PagingIndex.printPagingIndex(self, stream);

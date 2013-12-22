@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class Interval extends StandardObject {
@@ -86,7 +88,7 @@ public class Interval extends StandardObject {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { Interval self = this;
 
       stream.print("[" + self.lowerBound + "," + self.upperBound + "]");

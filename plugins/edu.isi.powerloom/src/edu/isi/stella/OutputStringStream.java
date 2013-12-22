@@ -45,6 +45,10 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
+import com.sun.xml.internal.ws.util.ByteArrayBuffer;
+
 import edu.isi.stella.javalib.*;
 
 public class OutputStringStream extends OutputStream {
@@ -65,10 +69,10 @@ public class OutputStringStream extends OutputStream {
   public String theStringReader() {
     { OutputStringStream self = this;
 
-      { java.io.PrintStream nativeStream = self.nativeStream;
+      { PrintableStringWriter nativeStream = self.nativeStream;
         String string = null;
 
-        string =((edu.isi.stella.javalib.PrintStringStream)nativeStream).toString();
+        string = nativeStream.toString();
         if (string == null) {
           string = "";
         }
@@ -84,7 +88,7 @@ public class OutputStringStream extends OutputStream {
   }
 
   public static void initializeStringOutputStream(OutputStringStream self) {
-    self.nativeStream = new edu.isi.stella.javalib.PrintStringStream();
+    self.nativeStream = new PrintableStringWriter(new ByteArrayBuffer());
   }
 
   public static Stella_Object accessOutputStringStreamSlotValue(OutputStringStream self, Symbol slotname, Stella_Object value, boolean setvalueP) {

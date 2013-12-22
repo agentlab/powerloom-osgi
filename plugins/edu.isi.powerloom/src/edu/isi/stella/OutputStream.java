@@ -45,10 +45,14 @@
 
 package edu.isi.stella;
 
+import java.io.IOException;
+
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class OutputStream extends Stream {
-    public java.io.PrintStream nativeStream;
+    public PrintableStringWriter nativeStream;
 
   public static OutputStream newOutputStream() {
     { OutputStream self = null;
@@ -707,17 +711,27 @@ public class OutputStream extends Stream {
    * @param self
    */
   public static void flushOutput(OutputStream self) {
-    { java.io.PrintStream nativeStream = self.nativeStream;
+    { PrintableStringWriter nativeStream = self.nativeStream;
 
-      nativeStream.flush();
+      try {
+		nativeStream.flush();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     }
   }
 
   public static boolean terminateOutputStreamP(OutputStream self) {
-    { java.io.PrintStream nativeStream = self.nativeStream;
+    { PrintableStringWriter nativeStream = self.nativeStream;
 
       if (!(nativeStream == null)) {
-        nativeStream.close();
+        try {
+			nativeStream.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
       }
       self.nativeStream = null;
       self.state = Stella.KWD_CLOSED;

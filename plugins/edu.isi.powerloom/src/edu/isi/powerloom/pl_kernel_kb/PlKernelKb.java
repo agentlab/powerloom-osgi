@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom.pl_kernel_kb;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.powerloom.logic.*;
@@ -3529,7 +3531,7 @@ public class PlKernelKb {
     }
   }
 
-  public static void printInterval(java.io.PrintStream stream, Stella_Object lower, boolean strictLowerP, Stella_Object upper, boolean strictUpperP) {
+  public static void printInterval(PrintableStringWriter stream, Stella_Object lower, boolean strictLowerP, Stella_Object upper, boolean strictUpperP) {
     if (strictLowerP) {
       stream.print("(");
     }

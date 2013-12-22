@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.powerloom.logic.*;
@@ -81,7 +83,7 @@ public class Environment extends StandardObject {
         Stella.stringEqlP(env.level, level));
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { Environment self = this;
 
       stream.print("|ENV|" + self.level);

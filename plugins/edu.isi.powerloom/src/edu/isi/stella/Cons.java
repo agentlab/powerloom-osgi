@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class Cons extends StandardObject {
@@ -16115,7 +16117,7 @@ public class Cons extends StandardObject {
     }
   }
 
-  public static void pprintCons(Cons tree, java.io.PrintStream stream, String lparen, String rparen) {
+  public static void pprintCons(Cons tree, PrintableStringWriter stream, String lparen, String rparen) {
     { Object old$PrintprettyP$000 = Stella.$PRINTPRETTYp$.get();
 
       try {
@@ -16128,7 +16130,7 @@ public class Cons extends StandardObject {
     }
   }
 
-  public static void printCons(Cons tree, java.io.PrintStream stream, String lparen, String rparen) {
+  public static void printCons(Cons tree, PrintableStringWriter stream, String lparen, String rparen) {
     if (((Boolean)(Stella.$PRINTREADABLYp$.get())).booleanValue()) {
       lparen = "(";
       rparen = ")";
@@ -17938,7 +17940,7 @@ public class Cons extends StandardObject {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { Cons self = this;
 
       Cons.printCons(self, stream, "(", ")");

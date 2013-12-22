@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class Keyword extends GeneralizedSymbol {
@@ -697,7 +699,7 @@ public class Keyword extends GeneralizedSymbol {
     return (((List)(Stella.$CURRENT_STELLA_FEATURES$.get())).membP(feature));
   }
 
-  public static void printKeyword(Keyword self, java.io.PrintStream stream) {
+  public static void printKeyword(Keyword self, PrintableStringWriter stream) {
     stream.print(":");
     if (((Boolean)(Stella.$PRINTREADABLYp$.get())).booleanValue()) {
       Stella.printSymbolNameReadably(self.symbolName, stream, false);
@@ -735,7 +737,7 @@ public class Keyword extends GeneralizedSymbol {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { Keyword self = this;
 
       Keyword.printKeyword(self, stream);

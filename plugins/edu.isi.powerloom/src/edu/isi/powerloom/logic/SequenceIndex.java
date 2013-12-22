@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom.logic;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.stella.*;
@@ -89,7 +91,7 @@ public abstract class SequenceIndex extends StandardObject {
     }
   }
 
-  public static void printSequenceIndex(SequenceIndex self, java.io.PrintStream stream) {
+  public static void printSequenceIndex(SequenceIndex self, PrintableStringWriter stream) {
     { int limit = 10;
 
       stream.print("|SEQ-IDX|(");
@@ -247,7 +249,7 @@ public abstract class SequenceIndex extends StandardObject {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { SequenceIndex self = this;
 
       SequenceIndex.printSequenceIndex(self, stream);

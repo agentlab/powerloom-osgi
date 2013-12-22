@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom;
 
+import org.powerloom.PushbackBufferedReader;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.powerloom.logic.*;
@@ -4110,7 +4112,7 @@ public class PLI {
    * @param stream
    * @param environment
    */
-  public static void loadNativeStream(java.io.PushbackInputStream stream, Environment environment) {
+  public static void loadNativeStream(PushbackBufferedReader stream, Environment environment) {
     { Module mdl000 = ((Module)(Stella.$MODULE$.get()));
       Context cxt000 = mdl000;
 
@@ -4154,7 +4156,7 @@ public class PLI {
    * @param module
    * @param environment
    */
-  public static void loadNativeStreamInModule(java.io.PushbackInputStream stream, Module module, Environment environment) {
+  public static void loadNativeStreamInModule(PushbackBufferedReader stream, Module module, Environment environment) {
     { Module mdl000 = module;
       Context cxt000 = mdl000;
 

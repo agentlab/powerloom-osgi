@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class LongIntegerWrapper extends NumberWrapper {
@@ -122,7 +124,7 @@ public class LongIntegerWrapper extends NumberWrapper {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { LongIntegerWrapper self = this;
 
       { long value = self.wrapperValue;

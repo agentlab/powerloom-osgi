@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class MethodSlot extends Slot {
@@ -2575,7 +2577,7 @@ public class MethodSlot extends Slot {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { MethodSlot self = this;
 
       if (self.methodFunctionP) {

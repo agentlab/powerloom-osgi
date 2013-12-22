@@ -51,6 +51,10 @@ package edu.isi.powerloom.logic;
 
 import java.net.*;
 import java.io.*;
+
+import org.powerloom.PrintableStringWriter;
+import org.powerloom.PushbackBufferedReader;
+
 import edu.isi.stella.*;
 import edu.isi.stella.javalib.*;
 
@@ -124,10 +128,10 @@ public class PowerLoomServerThread extends Thread {
       // Need to use these deprecated forms for compatibility with
       // the standard system I/O streams & Stella.
       out = edu.isi.stella.OutputStream.newOutputStream();
-      out.nativeStream = new PrintStream(socket.getOutputStream());
+      out.nativeStream = new PrintableStringWriter(socket.getOutputStream());
 
       in = edu.isi.stella.InputStream.newInputStream();
-      in.nativeStream = new PushbackInputStream(socket.getInputStream());
+      in.nativeStream = new PushbackBufferedReader(new InputStreamReader(socket.getInputStream()));
 
       Stella_Object inputObject, resultObject;
       String outputLine;

@@ -45,6 +45,14 @@
 
 package edu.isi.stella;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+
+import org.powerloom.PrintableStringWriter;
+import org.powerloom.PushbackBufferedReader;
+
 import edu.isi.stella.javalib.*;
 
 public class InputFileStream extends InputStream {
@@ -78,7 +86,7 @@ public class InputFileStream extends InputStream {
   public long streamPositionSetter(long newpos) {
     { InputFileStream self = this;
 
-      { java.io.PushbackInputStream nstream = self.nativeStream;
+      { PushbackBufferedReader nstream = self.nativeStream;
         TokenizerStreamState state = self.tokenizerState;
 
         if (state != null) {
@@ -122,7 +130,7 @@ public class InputFileStream extends InputStream {
   }
 
   public static boolean terminateFileInputStreamP(InputFileStream self) {
-    { java.io.PushbackInputStream nativeStream = self.nativeStream;
+    { PushbackBufferedReader nativeStream = self.nativeStream;
 
       if (!(nativeStream == null)) {
         try {
@@ -164,7 +172,19 @@ public class InputFileStream extends InputStream {
           }
         }
       }
-      self.nativeStream = NativeFileInputStream.open(filename);
+      
+      FileInputStream inputStream;
+	try {
+		inputStream = new FileInputStream(filename);
+		self.nativeStream = new PushbackBufferedReader(new InputStreamReader(inputStream, "utf8"));
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (UnsupportedEncodingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
       if (self.nativeStream == null) {
         { OutputStringStream stream001 = OutputStringStream.newOutputStringStream();
 
@@ -177,7 +197,7 @@ public class InputFileStream extends InputStream {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { InputFileStream self = this;
 
       stream.print("|FIS|'" + self.filename + "'");

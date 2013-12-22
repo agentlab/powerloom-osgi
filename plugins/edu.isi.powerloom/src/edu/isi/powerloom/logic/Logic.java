@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom.logic;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.stella.*;
@@ -27386,7 +27388,7 @@ public class Logic {
     Logic.saveModule(arguments.value, ((StringWrapper)(arguments.rest.value)).wrapperValue);
   }
 
-  public static OutputStream wrapNativeOutputStream(java.io.PrintStream nativestream) {
+  public static OutputStream wrapNativeOutputStream(PrintableStringWriter nativestream) {
     if (nativestream == Stella.STANDARD_OUTPUT.nativeStream) {
       return (Stella.STANDARD_OUTPUT);
     }
@@ -27402,7 +27404,7 @@ public class Logic {
     }
   }
 
-  public static void printTopLevelObject(Stella_Object self, java.io.PrintStream nativestream) {
+  public static void printTopLevelObject(Stella_Object self, PrintableStringWriter nativestream) {
     { OutputStream stream = Logic.wrapNativeOutputStream(nativestream);
 
       if (self.deletedP()) {

@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public abstract class Slot extends PolymorphicRelation {
@@ -829,7 +831,7 @@ public abstract class Slot extends PolymorphicRelation {
     return (self.slotPublicP);
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { Slot self = this;
 
       stream.print("|S|" + self.slotOwner.symbolName + "." + self.slotName.symbolName);

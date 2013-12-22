@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class TaxonomyNode extends StandardObject {
@@ -453,7 +455,7 @@ public class TaxonomyNode extends StandardObject {
     return (node.parents == Stella.NIL);
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { TaxonomyNode self = this;
 
       stream.print("|TN|" + self.label + " " + self.intervals + " " + self.nativeObject);

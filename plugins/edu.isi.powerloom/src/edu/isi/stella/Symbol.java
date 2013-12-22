@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class Symbol extends GeneralizedSymbol {
@@ -2500,7 +2502,7 @@ public class Symbol extends GeneralizedSymbol {
     }
   }
 
-  public static void printSymbol(Symbol self, java.io.PrintStream stream) {
+  public static void printSymbol(Symbol self, PrintableStringWriter stream) {
     { boolean visibleP = self == Symbol.lookupSymbolInModule(self.symbolName, ((Module)(Stella.$MODULE$.get())), false);
       Module module = ((Module)(self.homeContext));
 
@@ -2782,7 +2784,7 @@ public class Symbol extends GeneralizedSymbol {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { Symbol self = this;
 
       Symbol.printSymbol(self, stream);

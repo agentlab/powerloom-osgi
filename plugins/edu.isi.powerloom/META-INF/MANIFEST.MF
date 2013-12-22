@@ -2,22 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Powerloom
 Bundle-SymbolicName: edu.isi.powerloom
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 4.0.6.qualifier
 Bundle-Activator: org.powerloom.Activator
-Require-Bundle: org.eclipse.core.runtime,
- org.junit,
- org.eclipse.xtend.lib,
- com.google.guava,
- org.eclipse.xtext.xbase.lib
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: lib/castor-core.jar,
- lib/castor.jar,
- lib/commons-logging.jar,
- lib/powerloom-gui.jar,
- lib/powerloom-server.jar,
- lib/powerloom.jar,
- lib/stella.jar,
- .
+ lib/castor.jar
 Export-Package: edu.isi.powerloom,
  edu.isi.powerloom.extensions,
  edu.isi.powerloom.extensions.timepoint,
@@ -30,8 +19,6 @@ Export-Package: edu.isi.powerloom,
  edu.isi.stella,
  edu.isi.stella.javalib,
  edu.isi.stella.utilities,
- org.apache.commons.logging,
- org.apache.commons.logging.impl,
  org.castor.core,
  org.castor.core.annotationprocessing,
  org.castor.core.constants.cpa,
@@ -71,3 +58,5 @@ Export-Package: edu.isi.powerloom,
  org.exolab.castor.xml.wls8,
  org.powerloom
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.apache.commons.logging;bundle-version="1.1.1"
+Import-Package: org.osgi.framework

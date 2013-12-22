@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class StringWrapper extends LiteralWrapper {
@@ -446,7 +448,7 @@ public class StringWrapper extends LiteralWrapper {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { StringWrapper self = this;
 
       { String value = self.wrapperValue;

@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 /** Defines a class that must be inherited by any
@@ -55,7 +57,7 @@ public abstract class Thing extends StandardObject {
     public Surrogate surrogateValueInverse;
     public KeyValueList dynamicSlots;
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { Thing self = this;
 
       if (self.surrogateValueInverse != null) {

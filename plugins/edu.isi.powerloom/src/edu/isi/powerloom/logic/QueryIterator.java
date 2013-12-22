@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom.logic;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.stella.*;
@@ -1704,7 +1706,7 @@ public class QueryIterator extends Iterator {
     }
   }
 
-  public static void printQueryIteratorReadably(QueryIterator self, java.io.PrintStream stream) {
+  public static void printQueryIteratorReadably(QueryIterator self, PrintableStringWriter stream) {
     { QuerySolutionTable solutions = self.solutions;
       boolean firstP = true;
       boolean atomicsingletonsP = ((BooleanWrapper)(KeyValueList.dynamicSlotValue(self.dynamicSlots, Logic.SYM_LOGIC_ATOMIC_SINGLETONSp, Stella.FALSE_WRAPPER))).wrapperValue &&
@@ -1776,7 +1778,7 @@ public class QueryIterator extends Iterator {
     }
   }
 
-  public static void printQueryIteratorSolutionOrnately(QueryIterator self, QuerySolution solution, int solutionnumber, java.io.PrintStream stream) {
+  public static void printQueryIteratorSolutionOrnately(QueryIterator self, QuerySolution solution, int solutionnumber, PrintableStringWriter stream) {
     if (solutionnumber == Stella.NULL_INTEGER) {
       solutionnumber = 0;
       { QuerySolution solution000 = null;
@@ -1828,7 +1830,7 @@ public class QueryIterator extends Iterator {
     }
   }
 
-  public static void printQueryIteratorOrnately(QueryIterator self, java.io.PrintStream stream) {
+  public static void printQueryIteratorOrnately(QueryIterator self, PrintableStringWriter stream) {
     { QuerySolutionTable solutions = self.solutions;
       int nofsolutions = solutions.length();
       boolean exhaustedP = self.exhaustedP;
@@ -1900,7 +1902,7 @@ public class QueryIterator extends Iterator {
     }
   }
 
-  public static void printQueryIterator(QueryIterator self, java.io.PrintStream stream) {
+  public static void printQueryIterator(QueryIterator self, PrintableStringWriter stream) {
     if (Logic.$DEBUG_PRINT_MODEp$) {
       stream.print("[" + ((StringWrapper)(KeyValueList.dynamicSlotValue(self.dynamicSlots, Logic.SYM_LOGIC_DEBUG_ID, Stella.NULL_STRING_WRAPPER))).wrapperValue + "] ");
     }
@@ -2242,7 +2244,7 @@ public class QueryIterator extends Iterator {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { QueryIterator self = this;
 
       QueryIterator.printQueryIterator(self, stream);

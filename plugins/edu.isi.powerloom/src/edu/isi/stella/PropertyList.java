@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class PropertyList extends Dictionary {
@@ -309,7 +311,7 @@ public class PropertyList extends Dictionary {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { PropertyList self = this;
 
       {

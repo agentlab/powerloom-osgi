@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class Vector extends Sequence {
@@ -480,7 +482,7 @@ public class Vector extends Sequence {
     }
   }
 
-  public void printVector(java.io.PrintStream stream) {
+  public void printVector(PrintableStringWriter stream) {
     { Vector self = this;
 
       if (self.length() == 0) {
@@ -641,7 +643,7 @@ public class Vector extends Sequence {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { Vector self = this;
 
       self.printVector(stream);

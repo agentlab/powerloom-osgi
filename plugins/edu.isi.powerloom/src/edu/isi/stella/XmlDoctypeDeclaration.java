@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class XmlDoctypeDeclaration extends XmlDeclaration {
@@ -59,7 +61,7 @@ public class XmlDoctypeDeclaration extends XmlDeclaration {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { XmlDoctypeDeclaration self = this;
 
       if (self.data == null) {

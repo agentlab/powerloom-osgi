@@ -47,9 +47,13 @@
 package edu.isi.stella.javalib;
 
 import edu.isi.stella.*;
+
 import java.io.*;
 import java.lang.management.ThreadMXBean;
 import java.lang.management.ManagementFactory;
+
+import org.powerloom.PrintableStringWriter;
+import org.powerloom.PushbackBufferedReader;
 
 public class Native {
 
@@ -309,9 +313,17 @@ public class Native {
   // in Java.
   public static String stringify_via_print(Stella_Object expression) {
     ByteArrayOutputStream  s = new ByteArrayOutputStream (1024);
-    PrintStream ps = new PrintStream(s);
+    PrintableStringWriter ps = new PrintableStringWriter(s);
     expression.printObject(ps);
-    return s.toString();
+    try {
+		ps.flush();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+    byte[] result = s.toByteArray();
+    String str = s.toString(); 
+    return str;
   }
 
   public static String stringify(Stella_Object expression) {
@@ -381,22 +393,22 @@ public class Native {
       return NativeFileOutputStream.open(filename, append);
   }
 
-  public static String readLine(PushbackInputStream stream) {
+  public static String readLine(PushbackBufferedReader stream) {
     // Create a new encapsulated stream that knows how to read lines of
     //   data:
     // SHOULD USE THIS TO AVOID DEPRECATION
     // BufferedReader s = new BufferedReader(new InputStreamReader(stream));
-    DataInputStream s = new DataInputStream(stream);
+    //DataInputStream s = new DataInputStream(stream);
 
     try {
-      return s.readLine();
+      return stream.readLine();
     }
     catch (IOException e) {
       throw (InputOutputException) InputOutputException.newInputOutputException("readLine: " + e.getMessage()).fillInStackTrace();
     }
   }
 
-  public static char readCharacter(PushbackInputStream stream, Stella_Object [] return_values) {
+  public static char readCharacter(PushbackBufferedReader stream, Stella_Object [] return_values) {
     int return_int;
     char return_char;
 
@@ -419,9 +431,9 @@ public class Native {
     return return_char;
   }
 
-  public static void unreadCharacter(char c, PushbackInputStream stream) {
+  public static void unreadCharacter(char c, PushbackBufferedReader stream) {
     try {
-      stream.unread(c);
+    	stream.unread(c);
     }
     catch (IOException e) {
       throw (InputOutputException) InputOutputException.newInputOutputException("unreadCharacter: " + e.getMessage()).fillInStackTrace();

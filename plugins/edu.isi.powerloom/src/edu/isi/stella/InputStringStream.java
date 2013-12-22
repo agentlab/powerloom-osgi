@@ -45,6 +45,10 @@
 
 package edu.isi.stella;
 
+import java.io.InputStreamReader;
+
+import org.powerloom.PushbackBufferedReader;
+
 import edu.isi.stella.javalib.*;
 
 public class InputStringStream extends InputStream {
@@ -74,7 +78,7 @@ public class InputStringStream extends InputStream {
   public static void initializeStringInputStream(InputStringStream self) {
     { String string = self.theString;
 
-      self.nativeStream = new java.io.PushbackInputStream(new java.io.StringBufferInputStream(string));
+      self.nativeStream = new PushbackBufferedReader(new InputStreamReader(new java.io.StringBufferInputStream(string)));
     }
   }
 

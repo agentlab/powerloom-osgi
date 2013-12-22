@@ -45,6 +45,8 @@
 
 package edu.isi.stella.utilities;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.stella.*;
@@ -217,7 +219,7 @@ public class Measure extends StandardObject {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { Measure self = this;
 
       stream.print("<Measure " + self.name + "(" + self.baseUnit + ")>");

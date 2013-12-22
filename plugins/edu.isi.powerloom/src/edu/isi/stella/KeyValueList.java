@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class KeyValueList extends Dictionary {
@@ -522,7 +524,7 @@ public class KeyValueList extends Dictionary {
     }
   }
 
-  public static void printKeyValueList(KeyValueList self, java.io.PrintStream stream) {
+  public static void printKeyValueList(KeyValueList self, PrintableStringWriter stream) {
     stream.print("|kv|(");
     { KvCons cursor = self.theKvList;
       int position = 1;
@@ -1028,7 +1030,7 @@ public class KeyValueList extends Dictionary {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { KeyValueList self = this;
 
       KeyValueList.printKeyValueList(self, stream);

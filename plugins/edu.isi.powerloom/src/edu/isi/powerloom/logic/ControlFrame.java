@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom.logic;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.stella.*;
@@ -3585,7 +3587,7 @@ public class ControlFrame extends StandardObject {
     }
   }
 
-  public static void printControlFrame(ControlFrame self, java.io.PrintStream stream) {
+  public static void printControlFrame(ControlFrame self, PrintableStringWriter stream) {
     if (Surrogate.subtypeOfP(Stella_Object.safePrimaryType(self), Logic.SGT_LOGIC_PARALLEL_CONTROL_FRAME)) {
       { ParallelControlFrame self000 = ((ParallelControlFrame)(self));
 
@@ -5701,7 +5703,7 @@ public class ControlFrame extends StandardObject {
     frame.state = Logic.KWD_POPPED;
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { ControlFrame self = this;
 
       ControlFrame.printControlFrame(self, stream);

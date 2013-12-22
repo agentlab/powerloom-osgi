@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class Stella_Class extends Relation {
@@ -122,7 +124,7 @@ public class Stella_Class extends Relation {
     }
   }
 
-  public static void idlTranslateClassToStream(Stella_Class renamed_Class, java.io.PrintStream nativeStream) {
+  public static void idlTranslateClassToStream(Stella_Class renamed_Class, PrintableStringWriter nativeStream) {
     { TranslationUnit self000 = TranslationUnit.newTranslationUnit();
 
       self000.theObject = renamed_Class;
@@ -4158,7 +4160,7 @@ public class Stella_Class extends Relation {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { Stella_Class self = this;
 
       stream.print("|C|" + (((self.classType != null) ? Stella_Class.classSymbol(self).relativeName(false) : "??")));

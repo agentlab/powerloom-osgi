@@ -43,7 +43,7 @@
 
 // Native Print String Stream
 //
-// Combines the java.io.PrintStream functionality with 
+// Combines the org.powerloom.PrintableStringWriter functionality with 
 //   the java.io.ByteArrayOutputStream functionality.
 //
 // The only method implemented in this file is the "toString" method and

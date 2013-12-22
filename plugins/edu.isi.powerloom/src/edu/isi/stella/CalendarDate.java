@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 /** Representation of Date and Time with the date represented
@@ -508,7 +510,7 @@ public class CalendarDate extends DateTimeObject {
     }
   }
 
-  public void printCalendarDate(java.io.PrintStream stream) {
+  public void printCalendarDate(PrintableStringWriter stream) {
     { CalendarDate date = this;
 
       if (((Boolean)(Stella.$PRINTREADABLYp$.get())).booleanValue()) {
@@ -680,7 +682,7 @@ public class CalendarDate extends DateTimeObject {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { CalendarDate self = this;
 
       self.printCalendarDate(stream);

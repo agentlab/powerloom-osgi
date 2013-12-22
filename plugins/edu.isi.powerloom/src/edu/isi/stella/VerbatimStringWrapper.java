@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 /** Wrapper class used to hold verbatim native code strings.
@@ -60,7 +62,7 @@ public class VerbatimStringWrapper extends StringWrapper {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { VerbatimStringWrapper self = this;
 
       stream.print(((((Boolean)(Stella.$PRINTREADABLYp$.get())).booleanValue() ? "" : "|V|")) + self.wrapperValue);

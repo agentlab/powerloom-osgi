@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class FloatWrapper extends NumberWrapper {
@@ -154,7 +156,7 @@ public class FloatWrapper extends NumberWrapper {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { FloatWrapper self = this;
 
       { double value = self.wrapperValue;

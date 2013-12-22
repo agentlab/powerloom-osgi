@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class IntegerWrapper extends NumberWrapper {
@@ -170,7 +172,7 @@ public class IntegerWrapper extends NumberWrapper {
     return (Cons.list$(Cons.cons(Stella.SYM_STELLA_WHEN, Cons.cons(Cons.list$(Cons.cons(Stella.SYM_STELLA_NOT, Cons.cons(test, Cons.cons(Stella.NIL, Stella.NIL)))), Cons.cons(Cons.list$(Cons.cons(Stella.SYM_STELLA_PRINT_STREAM, Cons.cons(Stella.KWD_ERROR, Cons.cons(StringWrapper.wrapString("Safety violation: "), Cons.cons(body.concatenate(Stella.NIL, Stella.NIL), Stella.NIL))))), Cons.cons(Stella.NIL, Stella.NIL))))));
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { IntegerWrapper self = this;
 
       { int value = self.wrapperValue;

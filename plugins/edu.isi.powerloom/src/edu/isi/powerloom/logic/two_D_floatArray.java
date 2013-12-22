@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom.logic;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.stella.*;
@@ -72,7 +74,7 @@ public class two_D_floatArray extends MultiDimensionalArray {
   /** Print the array <code>self</code> to <code>stream</code>.
    * @param stream
    */
-  public void printArray(java.io.PrintStream stream) {
+  public void printArray(PrintableStringWriter stream) {
     { two_D_floatArray self = this;
 
       { int nofRows = self.nofRows;
@@ -192,7 +194,7 @@ public class two_D_floatArray extends MultiDimensionalArray {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { two_D_floatArray self = this;
 
       self.printArray(stream);

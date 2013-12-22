@@ -47,12 +47,12 @@ package edu.isi.stella;
 
 import edu.isi.stella.javalib.*;
 
-public class StartupStellaSystem {
+public class StartupStellaSystem {	
   public static void startupStellaSystem() {
     synchronized (Stella.$BOOTSTRAP_LOCK$) {
       if (Stella.currentStartupTimePhaseP(0)) {
         if (!(Stella.systemStartedUpP("stella", "/STELLA"))) {
-          Stella.startup(false);
+        	Stella.startup(false);
         }
       }
       { Object old$Module$000 = Stella.$MODULE$.get();

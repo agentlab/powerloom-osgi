@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom.rdbms;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.powerloom.logic.*;
@@ -3035,7 +3037,7 @@ public class RDBMS {
     }
   }
 
-  public static void evaluateFetchQuery(KeyValueList keys, java.io.PrintStream out) {
+  public static void evaluateFetchQuery(KeyValueList keys, PrintableStringWriter out) {
     try {
       { Module temp000 = Stella.getStellaModule("EELD-EDB", false);
 

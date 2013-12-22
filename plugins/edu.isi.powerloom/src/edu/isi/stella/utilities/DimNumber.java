@@ -45,6 +45,8 @@
 
 package edu.isi.stella.utilities;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.stella.*;
@@ -676,7 +678,7 @@ public class DimNumber extends Quantity {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { DimNumber self = this;
 
       stream.print("<" + self.getMagnitude(self.getUnit()) + self.getUnit() + ">");

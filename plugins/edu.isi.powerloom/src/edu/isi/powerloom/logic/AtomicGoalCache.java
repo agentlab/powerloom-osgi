@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom.logic;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.stella.*;
@@ -281,7 +283,7 @@ public class AtomicGoalCache extends StandardObject {
     return (false);
   }
 
-  public static void printAtomicGoalCache(AtomicGoalCache self, java.io.PrintStream stream) {
+  public static void printAtomicGoalCache(AtomicGoalCache self, PrintableStringWriter stream) {
     if (self.proposition == null) {
       stream.print("|GC|[NULL]");
       return;
@@ -317,7 +319,7 @@ public class AtomicGoalCache extends StandardObject {
     stream.print(") time: " + self.timestamp + " ctxt: " + self.goalContext.contextNumber + "]");
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { AtomicGoalCache self = this;
 
       AtomicGoalCache.printAtomicGoalCache(self, stream);

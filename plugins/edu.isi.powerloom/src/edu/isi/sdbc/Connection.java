@@ -45,6 +45,8 @@
 
 package edu.isi.sdbc;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.stella.*;
@@ -563,7 +565,7 @@ public class Connection extends StandardObject {
     return (60);
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { Connection self = this;
 
       stream.print("|CON|\"" + self.connectionString + "\"");

@@ -45,6 +45,10 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 /** A reflective object that can participate in dynamically-typed
@@ -197,7 +201,7 @@ public abstract class Stella_Object {
         (Stella.SYM_STELLA_JAVA_BINARY_OP == ((Cons)(statement)).value));
   }
 
-  public static void javaHelpOutputPrintStream(Stella_Object stream, Cons exps, boolean nativestreamP, boolean endoflineP) {
+  public static void javaHelpOutputPrintStream(Stella_Object stream, Cons exps, boolean nativeWriterP, boolean endoflineP) {
     if (stream == Stella.SYM_STELLA_JAVA_STANDARD_OUT) {
       if ((Stella.string_getStellaClass("SYSTEM", false) != null) ||
           Stella.inheritedClassNameConflictsP("SYSTEM")) {
@@ -218,8 +222,8 @@ public abstract class Stella_Object {
     }
     else {
       Stella_Object.javaOutputStatement(stream);
-      if (!nativestreamP) {
-        ((OutputStream)(Stella.$CURRENT_STREAM$.get())).nativeStream.print(".nativeStream");
+      if (!nativeWriterP) {
+        ((OutputStream)(Stella.$CURRENT_STREAM$.get())).nativeStream.print(".nativeWriter");
       }
     }
     ((OutputStream)(Stella.$CURRENT_STREAM$.get())).nativeStream.print(((endoflineP ? ".println(" : ".print(")));
@@ -9085,7 +9089,7 @@ public abstract class Stella_Object {
     }
   }
 
-  public static void printStellaDefinition(Stella_Object tree, java.io.PrintStream stream) {
+  public static void printStellaDefinition(Stella_Object tree, PrintableStringWriter stream) {
     { Object old$PrintprettyP$000 = Stella.$PRINTPRETTYp$.get();
       Object old$PrintreadablyP$000 = Stella.$PRINTREADABLYp$.get();
 
@@ -9130,7 +9134,7 @@ public abstract class Stella_Object {
     }
   }
 
-  public static void printStellaCode(Stella_Object tree, java.io.PrintStream stream) {
+  public static void printStellaCode(Stella_Object tree, PrintableStringWriter stream) {
     { Object old$PrintprettyP$000 = Stella.$PRINTPRETTYp$.get();
       Object old$PrintreadablyP$000 = Stella.$PRINTREADABLYp$.get();
 
@@ -9824,7 +9828,7 @@ public abstract class Stella_Object {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { Stella_Object self = this;
 
       stream.print("|i|" + self.primaryType());

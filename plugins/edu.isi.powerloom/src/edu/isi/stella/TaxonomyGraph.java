@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class TaxonomyGraph extends StandardObject {
@@ -526,7 +528,7 @@ public class TaxonomyGraph extends StandardObject {
     graph.roots.insertNew(root);
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { TaxonomyGraph self = this;
 
       stream.print("|TG|" + self.roots);

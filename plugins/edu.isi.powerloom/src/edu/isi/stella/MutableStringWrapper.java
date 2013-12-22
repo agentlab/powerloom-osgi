@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class MutableStringWrapper extends LiteralWrapper {
@@ -127,7 +129,7 @@ public class MutableStringWrapper extends LiteralWrapper {
     return (Stella.stringL((x.wrapperValue).toString(), (y.wrapperValue).toString()));
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { MutableStringWrapper self = this;
 
       { StringBuffer value = self.wrapperValue;

@@ -45,10 +45,12 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public abstract class CompoundTypeSpecifier extends StandardObject {
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { CompoundTypeSpecifier self = this;
 
       stream.print("|TS|" + StandardObject.yieldTypeSpecTree(self));

@@ -45,6 +45,13 @@
 
 package edu.isi.stella;
 
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+import org.powerloom.PrintableStringWriter;
+import org.powerloom.PushbackBufferedReader;
+
 import edu.isi.stella.javalib.*;
 
 public class Stella {
@@ -4934,13 +4941,13 @@ public class Stella {
    * @return InputStream
    */
   public static InputStream openNetworkStream(String host, int port, Object [] MV_returnarray) {
-    { java.io.PushbackInputStream in = null;
-      java.io.PrintStream out = null;
+    { PushbackBufferedReader in = null;
+      PrintableStringWriter out = null;
 
       try {
         java.net.Socket s = new java.net.Socket(host, port);
-        in = new java.io.PushbackInputStream(s.getInputStream());
-        out = new java.io.PrintStream(s.getOutputStream());
+        in = new PushbackBufferedReader(new InputStreamReader(s.getInputStream()));
+        out = new PrintableStringWriter(s.getOutputStream());
       } catch (java.net.UnknownHostException uhe) {
         throw (InputOutputException) InputOutputException.newInputOutputException("Unknown host: " + host).fillInStackTrace();
       } catch (java.io.IOException ioe) {
@@ -4972,21 +4979,21 @@ public class Stella {
     }
   }
 
-  public static long nativeFileInputStreamPosition(java.io.PushbackInputStream nstream) {
-    return (((NativeFileInputStream)nstream).position());
+  public static long nativeFileInputStreamPosition(PushbackBufferedReader nstream) {
+    return 1;//((nstream).position());
   }
 
-  public static long nativeFileInputStreamPositionSetter(java.io.PushbackInputStream nstream, long newpos) {
-    ((NativeFileInputStream)nstream).position(newpos);
+  public static long nativeFileInputStreamPositionSetter(PushbackBufferedReader nstream, long newpos) {
+    //((NativeFileInputStream)nstream).position(newpos);
     return (newpos);
   }
 
-  public static long nativeFileOutputStreamPosition(java.io.PrintStream nstream) {
-    return (((NativeFileOutputStream)nstream).position());
+  public static long nativeFileOutputStreamPosition(org.powerloom.PrintableStringWriter nstream) {
+    return 1;//(((NativeFileOutputStream)nstream).position());
   }
 
-  public static long nativeFileOutputStreamPositionSetter(java.io.PrintStream nstream, long newpos) {
-    ((NativeFileOutputStream)nstream).position(newpos);
+  public static long nativeFileOutputStreamPositionSetter(org.powerloom.PrintableStringWriter nstream, long newpos) {
+    //((NativeFileOutputStream)nstream).position(newpos);
     return (newpos);
   }
 
@@ -4994,7 +5001,7 @@ public class Stella {
     return (Native.string_memberP(Stella.$HTML_QUOTED_CHARACTERS$, ch));
   }
 
-  public static void writeHtmlCharacterQuotingSpecialCharacters(java.io.PrintStream stream, char ch) {
+  public static void writeHtmlCharacterQuotingSpecialCharacters(PrintableStringWriter stream, char ch) {
     switch (ch) {
       case '>': 
         stream.print("&gt;");
@@ -5015,7 +5022,7 @@ public class Stella {
     return;
   }
 
-  public static void writeHtmlQuotingSpecialCharacters(java.io.PrintStream stream, String input) {
+  public static void writeHtmlQuotingSpecialCharacters(PrintableStringWriter writer, String input) {
     { char ch = Stella.NULL_CHARACTER;
       String vector000 = input;
       int index000 = 0;
@@ -5023,7 +5030,7 @@ public class Stella {
 
       for (;index000 < length000; index000 = index000 + 1) {
         ch = vector000.charAt(index000);
-        Stella.writeHtmlCharacterQuotingSpecialCharacters(stream, ch);
+        Stella.writeHtmlCharacterQuotingSpecialCharacters(writer, ch);
       }
     }
     return;
@@ -5034,7 +5041,7 @@ public class Stella {
    * @param stream
    * @param input
    */
-  public static void writeHtmlEscapingUrlSpecialCharacters(java.io.PrintStream stream, String input) {
+  public static void writeHtmlEscapingUrlSpecialCharacters(PrintableStringWriter stream, String input) {
     { char ch = Stella.NULL_CHARACTER;
       String vector000 = input;
       int index000 = 0;
@@ -7779,9 +7786,9 @@ public class Stella {
    * @param stream
    */
   public static void printExceptionContext(java.lang.Exception e, OutputStream stream) {
-    { java.io.PrintStream s = stream.nativeStream;
+    { PrintableStringWriter s = stream.nativeStream;
 
-      e.printStackTrace(s);;
+      s.println(e.toString());
     }
   }
 
@@ -8689,7 +8696,7 @@ public class Stella {
                 int tok_tokenstart_ = -1;
                 boolean tok_endoftokensP_ = false;
                 TokenizerStreamState tok_streamstate_ = null;
-                byte[] tok_buffer_ = name.getBytes();
+                char[] tok_buffer_ = name.toCharArray();
                 int tok_state_ = 1;
                 int tok_nextstate_ = tok_state_;
                 int tok_cursor_ = 0;
@@ -8781,17 +8788,17 @@ public class Stella {
     }
   }
 
-  public static void printSymbolNameReadably(String name, java.io.PrintStream stream, boolean casesensitiveP) {
+  public static void printSymbolNameReadably(String name, PrintableStringWriter writer, boolean casesensitiveP) {
     { Keyword testValue000 = Stella.computeSymbolEscapeCode(name, casesensitiveP);
 
       if (testValue000 == Stella.KWD_UNESCAPED) {
-        stream.print(name);
+        writer.print(name);
       }
       else if (testValue000 == Stella.KWD_ESCAPED) {
-        stream.print("|" + name + "|");
+        writer.print("|" + name + "|");
       }
       else if (testValue000 == Stella.KWD_COMPLEX_ESCAPED) {
-        stream.print("|");
+        writer.print("|");
         { char ch = Stella.NULL_CHARACTER;
           String vector000 = name;
           int index000 = 0;
@@ -8801,12 +8808,12 @@ public class Stella {
             ch = vector000.charAt(index000);
             if ((ch == '\\') ||
                 (ch == '|')) {
-              stream.print("\\");
+              writer.print("\\");
             }
-            stream.print(ch);
+            writer.print(ch);
           }
         }
-        stream.print("|");
+        writer.print("|");
       }
       else {
         { OutputStringStream stream000 = OutputStringStream.newOutputStringStream();
@@ -8912,7 +8919,7 @@ public class Stella {
     return (MethodCodeWrapper.wrapMethodCode(value));
   }
 
-  public static void printCharacter(char renamed_Char, java.io.PrintStream stream) {
+  public static void printCharacter(char renamed_Char, PrintableStringWriter stream) {
     stream.print("#\\");
     switch (renamed_Char) {
       case '\n': 
@@ -9180,7 +9187,7 @@ public class Stella {
     return (Stella.$CHARACTER_DOWNCASE_TABLE$.charAt(((int) renamed_Char)));
   }
 
-  public static void printStringReadably(String string, java.io.PrintStream stream) {
+  public static void printStringReadably(String string, PrintableStringWriter stream) {
     if (string == null) {
       stream.print(Stella.SYM_STELLA_NULL_STRING);
     }
@@ -12045,15 +12052,15 @@ public class Stella {
   public static void clOutputAllUnitsToFile(String sourcefile) {
     { String outputfile = Stella.makeFileName(sourcefile, Stella.KWD_LISP, false);
       OutputFileStream outputstream = OutputFileStream.newOutputFileStream(outputfile);
-      java.io.PrintStream nativeoutputstream = outputstream.nativeStream;
+      PrintableStringWriter writer = outputstream.nativeStream;
 
       if (((Integer)(Stella.$TRANSLATIONVERBOSITYLEVEL$.get())).intValue() >= 1) {
         System.out.println("Writing `" + outputfile + "'...");
       }
       OutputStream.outputFileHeader(outputstream, outputfile);
       {
-        nativeoutputstream.println(";;; Auxiliary variables:");
-        nativeoutputstream.println();
+        writer.println(";;; Auxiliary variables:");
+        writer.println();
       }
 ;
       { TranslationUnit unit = null;
@@ -12062,11 +12069,11 @@ public class Stella {
         for (;!(iter000 == Stella.NIL); iter000 = iter000.rest) {
           unit = ((TranslationUnit)(iter000.value));
           if (TranslationUnit.auxiliaryVariableUnitP(unit)) {
-            TranslationUnit.clOutputOneUnit(unit, nativeoutputstream);
+            TranslationUnit.clOutputOneUnit(unit, writer);
           }
         }
       }
-      Stella.clOutputForwardDeclarations(nativeoutputstream);
+      Stella.clOutputForwardDeclarations(writer);
       if (((List)(Stella.$CURRENT_STELLA_FEATURES$.get())).membP(Stella.KWD_USE_COMMON_LISP_STRUCTS) &&
           (!((List)(Stella.$CURRENT_STELLA_FEATURES$.get())).membP(Stella.KWD_USE_COMMON_LISP_VECTOR_STRUCTS))) {
         { TranslationUnit unit = null;
@@ -12075,7 +12082,7 @@ public class Stella {
           for (;!(iter001 == Stella.NIL); iter001 = iter001.rest) {
             unit = ((TranslationUnit)(iter001.value));
             if (unit.category == Stella.SYM_STELLA_CLASS) {
-              TranslationUnit.clOutputOneUnit(unit, nativeoutputstream);
+              TranslationUnit.clOutputOneUnit(unit, writer);
             }
           }
         }
@@ -12086,7 +12093,7 @@ public class Stella {
         for (;!(iter002 == Stella.NIL); iter002 = iter002.rest) {
           unit = ((TranslationUnit)(iter002.value));
           if (!TranslationUnit.auxiliaryVariableUnitP(unit)) {
-            TranslationUnit.clOutputOneUnit(unit, nativeoutputstream);
+            TranslationUnit.clOutputOneUnit(unit, writer);
           }
         }
       }
@@ -12094,7 +12101,7 @@ public class Stella {
     }
   }
 
-  public static void clOutputForwardDeclarations(java.io.PrintStream stream) {
+  public static void clOutputForwardDeclarations(PrintableStringWriter stream) {
     { List definedvariables = List.newList();
       List forwardreferencedvariables = List.newList();
 
@@ -12984,37 +12991,37 @@ public class Stella {
     }
   }
 
-  public static byte[] makeTokenizerByteArray(int size) {
-    return (new byte[size]);
+  public static char[] makeTokenizerByteArray(int size) {
+    return (new char[size]);
   }
 
-  public static byte[] stringToTokenizerByteArray(String string) {
-    return (string.getBytes());
+  public static char[] stringToTokenizerByteArray(String string) {
+    return (string.toCharArray());
   }
 
-  public static String tokenizerByteArrayToString(byte[] bytes) {
+  public static String tokenizerByteArrayToString(char[] bytes) {
     return (new String(bytes));
   }
 
-  public static char tokenizerByteArray_byteArrayNth(byte[] buffer, int position) {
+  public static char tokenizerByteArray_byteArrayNth(char[] buffer, int position) {
     return (((char) (0x00ff & buffer[position])));
   }
 
-  public static byte tokenizerByteArray_byteArrayNthSetter(byte[] buffer, char ch, int position) {
-    return (buffer[position] = (byte)ch);
+  public static char tokenizerByteArray_byteArrayNthSetter(char[] buffer, char ch, int position) {
+    return (buffer[position] = (char)ch);
   }
 
-  public static int nativeByteArrayReadSequence(byte[] buffer, java.io.PushbackInputStream stream, int start, int end) {
+  public static int nativeByteArrayReadSequence(char[] buffer, PushbackBufferedReader reader, int start, int end) {
     { int n = 0;
 
-      try {n = stream.read(buffer, start, end - start); if (n < 0) n = 0;}
+      try {n = reader.read(buffer, start, end - start); if (n < 0) n = 0;}
          catch (java.io.IOException e) {n = 0;}
 ;
       return (n + start);
     }
   }
 
-  public static int tokenizerByteArrayReadSequence(byte[] buffer, InputStream stream, int start, int end) {
+  public static int tokenizerByteArrayReadSequence(char[] buffer, InputStream stream, int start, int end) {
     { TokenizerStreamState state = stream.tokenizerState;
       int cursor = state.cursor;
       int internalEnd = state.end;
@@ -13033,7 +13040,7 @@ public class Stella {
       }
       { int readSize = Stella.integer_min(end - start, internalEnd - cursor);
         int originalStart = start;
-        byte[] internalBuffer = state.buffer;
+        char[] internalBuffer = state.buffer;
 
         { int i = Stella.NULL_INTEGER;
           int iter000 = 1;
@@ -13044,14 +13051,14 @@ public class Stella {
                     (iter000 <= upperBound000); iter000 = iter000 + 1) {
             i = iter000;
             i = i;
-            buffer[start] = (byte)(((char) (0x00ff & internalBuffer[cursor])));
+            buffer[start] = (char)(((char) (0x00ff & internalBuffer[cursor])));
             start = start + 1;
             cursor = cursor + 1;
           }
         }
-        if (echostream != null) {
-          Stella.byteArrayWriteSequence(buffer, echostream.nativeStream, originalStart, end);
-        }
+//        if (echostream != null) {
+//          Stella.byteArrayWriteSequence(buffer, echostream.nativeWriter, originalStart, end);
+//        }
         state.cursor = cursor;
         return (readSize);
       }
@@ -13068,7 +13075,7 @@ public class Stella {
    * @param end
    * @return int
    */
-  public static int byteArrayReadSequence(byte[] buffer, InputStream stream, int start, int end) {
+  public static int byteArrayReadSequence(char[] buffer, InputStream stream, int start, int end) {
     if (stream.tokenizerState != null) {
       return (Stella.tokenizerByteArrayReadSequence(buffer, stream, start, end));
     }
@@ -13077,8 +13084,8 @@ public class Stella {
     }
   }
 
-  public static void nativeByteArrayWriteSequence(byte[] buffer, java.io.PrintStream stream, int start, int end) {
-    try {stream.write(buffer, start, end - start);}
+  public static void nativeByteArrayWriteSequence(char[] buffer, PrintableStringWriter writer, int start, int end) {
+    try {writer.write(buffer, start, end - start);}
          catch (java.lang.Exception e) {}
 ;
   }
@@ -13090,8 +13097,8 @@ public class Stella {
    * @param start
    * @param end
    */
-  public static void byteArrayWriteSequence(byte[] buffer, java.io.PrintStream stream, int start, int end) {
-    Stella.nativeByteArrayWriteSequence(buffer, stream, start, end);
+  public static void byteArrayWriteSequence(char[] buffer, PrintableStringWriter writer, int start, int end) {
+    Stella.nativeByteArrayWriteSequence(buffer, writer, start, end);
   }
 
   public static void unreadCharacterFromTokenizerBuffer(char renamed_Char, InputStream stream) {
@@ -13148,7 +13155,7 @@ public class Stella {
     return (Stella.SYM_STELLA_TOK_ENDOFTOKENSp_);
   }
 
-  public static String getTokenTextInternal(byte[] buffer, int start, int end, int size, boolean upcaseP) {
+  public static String getTokenTextInternal(char[] buffer, int start, int end, int size, boolean upcaseP) {
     if (start >= size) {
       start = start - size;
     }
@@ -13202,6 +13209,50 @@ public class Stella {
       return (result.toString());
     }
   }
+  
+  public static String getTokenTextInternalFree(char[] buffer, int start, int end, int size, boolean upcaseP) {
+	    if (start >= size) {
+	      start = start - size;
+	    }
+	    else if (start < 0) {
+	      start = size + start;
+	    }
+	    if (end > size) {
+	      end = end - size;
+	    }
+	    else if (end < 0) {
+	      end = size + end;
+	    }
+	    { int length = end - start;
+	      StringBuffer result = null;
+	      int cursor = 0;
+	      int auxend = end;
+
+	      if (length < 0) {
+	        length = length + size;
+	        auxend = size;
+	      }
+	      result = Stella.makeRawMutableString(length);
+	     
+	        loop000 : for (;;) {
+	          while (start < auxend) {
+	            edu.isi.stella.javalib.Native.mutableString_nthSetter(result, buffer[start], cursor);
+	            cursor = cursor + 1;
+	            start = start + 1;
+	          }
+	          if (auxend == end) {
+	            break loop000;
+	          }
+	          start = 0;
+	          auxend = end;
+	        }
+	     
+	      if (upcaseP)
+	    	  return (result.toString().toUpperCase());
+	      else
+	    	  return (result.toString());
+	    }
+	  }
 
   public static Stella_Object getTokenType() {
     if (!Stella.insideWithTokenizerP()) {
@@ -13277,7 +13328,7 @@ public class Stella {
     return (Stella.SYM_STELLA_TOK_STELLALOGICALSTATENAME_);
   }
 
-  public static int getQualifiedSymbolSeparatorPositionInternal(byte[] buffer, int tokenstart, int tokenend, int size, Keyword escapemode) {
+  public static int getQualifiedSymbolSeparatorPositionInternal(char[] buffer, int tokenstart, int tokenend, int size, Keyword escapemode) {
     { int cursor = tokenend - 1;
       int separatorposition = 0;
       int nofescapes = 0;
@@ -13364,7 +13415,7 @@ public class Stella {
     return (Cons.list$(Cons.cons(Stella.SYM_STELLA_GET_TOKEN_INTEGER_INTERNAL, Cons.cons(Stella.SYM_STELLA_TOK_BUFFER_, Cons.cons(Stella.SYM_STELLA_TOK_TOKENSTART_, Cons.cons(Stella.SYM_STELLA_TOK_CURSOR_, Cons.cons(Stella.SYM_STELLA_TOK_SIZE_, Cons.cons(Stella.NIL, Stella.NIL))))))));
   }
 
-  public static int getTokenIntegerInternal(byte[] buffer, int start, int end, int size) {
+  public static int getTokenIntegerInternal(char[] buffer, int start, int end, int size) {
     { long result = Stella.getTokenLongIntegerInternal(buffer, start, end, size);
 
       if ((result > Stella.MOST_POSITIVE_INTEGER) ||
@@ -13408,7 +13459,7 @@ public class Stella {
     return (Cons.list$(Cons.cons(Stella.SYM_STELLA_GET_TOKEN_LONG_INTEGER_INTERNAL, Cons.cons(Stella.SYM_STELLA_TOK_BUFFER_, Cons.cons(Stella.SYM_STELLA_TOK_TOKENSTART_, Cons.cons(Stella.SYM_STELLA_TOK_CURSOR_, Cons.cons(Stella.SYM_STELLA_TOK_SIZE_, Cons.cons(Stella.NIL, Stella.NIL))))))));
   }
 
-  public static long getTokenLongIntegerInternal(byte[] buffer, int start, int end, int size) {
+  public static long getTokenLongIntegerInternal(char[] buffer, int start, int end, int size) {
     { int length = end - start;
       int auxend = end;
       long result = 0l;
@@ -13487,7 +13538,7 @@ public class Stella {
     return (Cons.list$(Cons.cons(Stella.SYM_STELLA_GET_TOKEN_FLOAT_INTERNAL, Cons.cons(Stella.SYM_STELLA_TOK_BUFFER_, Cons.cons(Stella.SYM_STELLA_TOK_TOKENSTART_, Cons.cons(Stella.SYM_STELLA_TOK_CURSOR_, Cons.cons(Stella.SYM_STELLA_TOK_SIZE_, Cons.cons(Stella.NIL, Stella.NIL))))))));
   }
 
-  public static double getTokenFloatInternal(byte[] buffer, int start, int end, int size) {
+  public static double getTokenFloatInternal(char[] buffer, int start, int end, int size) {
     { int length = end - start;
       int auxend = end;
       long mantissa = 0l;
@@ -13585,7 +13636,7 @@ public class Stella {
         int tok_tokenstart_ = -1;
         boolean tok_endoftokensP_ = false;
         TokenizerStreamState tok_streamstate_ = null;
-        byte[] tok_buffer_ = name.getBytes();
+        char[] tok_buffer_ = name.toCharArray();
         int tok_state_ = 1;
         int tok_nextstate_ = tok_state_;
         int tok_cursor_ = 0;
@@ -13856,7 +13907,7 @@ public class Stella {
       int tok_tokenstart_ = -1;
       boolean tok_endoftokensP_ = false;
       TokenizerStreamState tok_streamstate_ = null;
-      byte[] tok_buffer_ = name.getBytes();
+      char[] tok_buffer_ = name.toCharArray();
       int tok_state_ = 1;
       int tok_nextstate_ = tok_state_;
       int tok_cursor_ = 0;
@@ -14235,7 +14286,7 @@ public class Stella {
       TokenizerStreamState state = new TokenizerStreamState();
       int length = string.length() + 1;
 
-      state.buffer = new byte[length];
+      state.buffer = new char[length];
       state.bufferSize = length;
       state.cursor = length;
       state.end = length;
@@ -14258,9 +14309,9 @@ public class Stella {
       Stella.unreadCharacterFromTokenizerBuffer(ch, inputstream);
     }
     else {
-      { java.io.PushbackInputStream stream = inputstream.nativeStream;
+      { PushbackBufferedReader reader = inputstream.nativeStream;
 
-        Native.unreadCharacter(ch, stream);
+        Native.unreadCharacter(ch, reader);
       }
     }
   }
@@ -20811,7 +20862,7 @@ public class Stella {
   }
 
   public static void startup(boolean verboseP) {
-    Stella.startupKernel(verboseP);
+	 Stella.startupKernel(verboseP);
     if (verboseP) {
       System.out.println("Starting up translators...");
     }
@@ -20880,7 +20931,7 @@ public class Stella {
     }
   }
 
-  public static void main(String[] arguments) {
+/*  public static void main(String[] arguments) {
     { int count = arguments.length;
 
       { boolean testingP = count == 0;
@@ -20894,6 +20945,6 @@ public class Stella {
         }
       }
     }
-  }
+  }*/
 
 }

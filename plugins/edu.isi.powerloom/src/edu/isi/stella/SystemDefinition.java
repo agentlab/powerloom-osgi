@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 /** The System-Definition class is used to define systems of files
@@ -638,7 +640,7 @@ public class SystemDefinition extends StandardObject {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { SystemDefinition self = this;
 
       stream.print("|SYSTEM|" + self.name);

@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class XmlDoctype extends StandardObject {
@@ -177,7 +179,7 @@ public class XmlDoctype extends StandardObject {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { XmlDoctype self = this;
 
       stream.print("<!DOCTYPE " + self.name + ">");

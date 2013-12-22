@@ -62,7 +62,7 @@ public class _StartupIdlTranslateFile {
           Stella.finalizeClasses();
         }
         if (Stella.currentStartupTimePhaseP(7)) {
-          Stella.defineFunctionObject("IDL-TRANSLATE-CLASS-TO-STREAM", "(DEFUN IDL-TRANSLATE-CLASS-TO-STREAM ((CLASS CLASS) (NATIVE-STREAM NATIVE-OUTPUT-STREAM)))", Native.find_java_method("edu.isi.stella.Stella_Class", "idlTranslateClassToStream", new java.lang.Class [] {Native.find_java_class("edu.isi.stella.Stella_Class"), Native.find_java_class("java.io.PrintStream")}), null);
+          Stella.defineFunctionObject("IDL-TRANSLATE-CLASS-TO-STREAM", "(DEFUN IDL-TRANSLATE-CLASS-TO-STREAM ((CLASS CLASS) (NATIVE-STREAM NATIVE-OUTPUT-STREAM)))", Native.find_java_method("edu.isi.stella.Stella_Class", "idlTranslateClassToStream", new java.lang.Class [] {Native.find_java_class("edu.isi.stella.Stella_Class"), Native.find_java_class("org.powerloom.PrintableStringWriter")}), null);
           Stella.defineFunctionObject("IDL-MAKE-CODE-OUTPUT-FILE-NAME", "(DEFUN (IDL-MAKE-CODE-OUTPUT-FILE-NAME FILE-NAME) ((SOURCEFILE FILE-NAME)))", Native.find_java_method("edu.isi.stella.Stella", "idlMakeCodeOutputFileName", new java.lang.Class [] {Native.find_java_class("java.lang.String")}), null);
           Stella.defineFunctionObject("IDL-OUTPUT-ALL-UNITS-TO-FILE", "(DEFUN IDL-OUTPUT-ALL-UNITS-TO-FILE ((SOURCEFILE FILE-NAME)))", Native.find_java_method("edu.isi.stella.Stella", "idlOutputAllUnitsToFile", new java.lang.Class [] {Native.find_java_class("java.lang.String")}), null);
           Stella.defineFunctionObject("IDL-TRANSLATE-FILE", "(DEFUN IDL-TRANSLATE-FILE ((FILENAME FILE-NAME)))", Native.find_java_method("edu.isi.stella.Stella", "idlTranslateFile", new java.lang.Class [] {Native.find_java_class("java.lang.String")}), null);

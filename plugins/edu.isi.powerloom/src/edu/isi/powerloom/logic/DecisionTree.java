@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom.logic;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.stella.*;
@@ -157,7 +159,7 @@ public class DecisionTree extends StandardObject {
     }
   }
 
-  public static void helpPrintDecisionTree(DecisionTree tree, int level, java.io.PrintStream stream) {
+  public static void helpPrintDecisionTree(DecisionTree tree, int level, PrintableStringWriter stream) {
     if (tree.feature == null) {
       if (tree.truthValue) {
         stream.println("True");
@@ -198,7 +200,7 @@ public class DecisionTree extends StandardObject {
     DecisionTree.helpPrintDecisionTree(tree.falseBranch, level + 1, stream);
   }
 
-  public static void printDecisionTree(DecisionTree tree, java.io.PrintStream stream) {
+  public static void printDecisionTree(DecisionTree tree, PrintableStringWriter stream) {
     DecisionTree.helpPrintDecisionTree(tree, 0, stream);
   }
 
@@ -230,7 +232,7 @@ public class DecisionTree extends StandardObject {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { DecisionTree self = this;
 
       DecisionTree.printDecisionTree(self, stream);

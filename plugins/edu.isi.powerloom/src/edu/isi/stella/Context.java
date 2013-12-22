@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public abstract class Context extends Thing {
@@ -94,7 +96,7 @@ public abstract class Context extends Thing {
     }
   }
 
-  public static void printContext(Context self, java.io.PrintStream stream) {
+  public static void printContext(Context self, PrintableStringWriter stream) {
     { String typestring = null;
       String name = null;
       int number = self.contextNumber;
@@ -471,7 +473,7 @@ public abstract class Context extends Thing {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { Context self = this;
 
       Context.printContext(self, stream);

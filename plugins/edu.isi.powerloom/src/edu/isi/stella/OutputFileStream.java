@@ -45,6 +45,14 @@
 
 package edu.isi.stella;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class OutputFileStream extends OutputStream {
@@ -84,15 +92,20 @@ public class OutputFileStream extends OutputStream {
   public long streamPosition() {
     { OutputFileStream self = this;
 
-      return (((NativeFileOutputStream)(self.nativeStream)).position());
+      return Stella.nativeFileOutputStreamPosition(self.nativeStream);
     }
   }
 
   public static boolean terminateFileOutputStreamP(OutputFileStream self) {
-    { java.io.PrintStream nativeStream = self.nativeStream;
+    { PrintableStringWriter nativeStream = self.nativeStream;
 
       if (!(nativeStream == null)) {
-        nativeStream.close();
+        try {
+			nativeStream.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
       }
       self.nativeStream = null;
       self.state = Stella.KWD_CLOSED;
@@ -153,7 +166,13 @@ public class OutputFileStream extends OutputStream {
           }
         }
       }
-      self.nativeStream = NativeFileOutputStream.open(filename, append);
+      
+      try {
+		self.nativeStream = new PrintableStringWriter(new FileOutputStream(filename, append));
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
       if (self.nativeStream == null) {
         { OutputStringStream stream002 = OutputStringStream.newOutputStringStream();
 
@@ -166,7 +185,7 @@ public class OutputFileStream extends OutputStream {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { OutputFileStream self = this;
 
       stream.print("|FOS|'" + self.filename + "'");

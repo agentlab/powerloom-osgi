@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 /** Rigid surrogate.
@@ -1348,7 +1350,7 @@ public class Surrogate extends GeneralizedSymbol {
     }
   }
 
-  public static void printSurrogate(Surrogate self, java.io.PrintStream stream) {
+  public static void printSurrogate(Surrogate self, PrintableStringWriter stream) {
     { boolean visibleP = self == Surrogate.lookupSurrogateInModule(self.symbolName, ((Module)(Stella.$MODULE$.get())), false);
       Module module = ((Module)(self.homeContext));
 
@@ -1669,7 +1671,7 @@ public class Surrogate extends GeneralizedSymbol {
           Surrogate.subtypeOfP(subtype, supertype))));
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { Surrogate self = this;
 
       Surrogate.printSurrogate(self, stream);

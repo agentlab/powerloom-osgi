@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class KvCons extends StandardObject {
@@ -190,7 +192,7 @@ public class KvCons extends StandardObject {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { KvCons self = this;
 
       stream.print("<" + self.key + "," + self.value + ">");

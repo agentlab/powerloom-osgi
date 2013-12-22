@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class TranslationUnit extends StandardObject {
@@ -650,7 +652,7 @@ public class TranslationUnit extends StandardObject {
         (((MethodSlot)(unit.theObject)).slotName == Symbol.lookupSymbol("MAIN")));
   }
 
-  public static void clOutputOneUnit(TranslationUnit unit, java.io.PrintStream stream) {
+  public static void clOutputOneUnit(TranslationUnit unit, PrintableStringWriter stream) {
     { Stella_Object translation = unit.translation;
 
       if (translation == null) {
@@ -1419,7 +1421,7 @@ public class TranslationUnit extends StandardObject {
     }
   }
 
-  public static void printTranslationUnit(TranslationUnit self, java.io.PrintStream stream) {
+  public static void printTranslationUnit(TranslationUnit self, PrintableStringWriter stream) {
     stream.print("|TU|[" + self.category);
     { Symbol testValue000 = self.category;
 
@@ -1442,7 +1444,7 @@ public class TranslationUnit extends StandardObject {
     self.translation = null;
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { TranslationUnit self = this;
 
       TranslationUnit.printTranslationUnit(self, stream);

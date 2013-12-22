@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class RecycleList extends Sequence {
@@ -189,7 +191,7 @@ public class RecycleList extends Sequence {
     list.currentLength = 0;
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { RecycleList self = this;
 
       if (self.recycleListOf != null) {

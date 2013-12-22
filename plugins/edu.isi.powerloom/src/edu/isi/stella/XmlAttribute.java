@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public abstract class XmlAttribute extends XmlObject {
@@ -67,7 +69,7 @@ public abstract class XmlAttribute extends XmlObject {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { XmlAttribute self = this;
 
       stream.print("<" + self.surfaceForm + ">");

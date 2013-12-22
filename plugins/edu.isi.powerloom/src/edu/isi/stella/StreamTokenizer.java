@@ -78,7 +78,7 @@ public class StreamTokenizer extends Iterator {
         InputStream tok_inputstream_ = self.stream;
         OutputStream tok_echostream_ = tok_inputstream_.echoStream;
         TokenizerStreamState tok_streamstate_ = ((tok_inputstream_.tokenizerState == null) ? (tok_inputstream_.tokenizerState = TokenizerStreamState.newTokenizerStreamState()) : tok_inputstream_.tokenizerState);
-        byte[] tok_buffer_ = tok_streamstate_.buffer;
+        char[] tok_buffer_ = tok_streamstate_.buffer;
         int tok_size_ = tok_streamstate_.bufferSize;
         int tok_state_ = tok_streamstate_.getSavedState(tok_table_);
         int tok_nextstate_ = tok_state_;

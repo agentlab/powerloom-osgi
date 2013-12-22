@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom.logic;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.stella.*;
@@ -65,7 +67,7 @@ public class QuantityLogicWrapper extends LogicThing {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { QuantityLogicWrapper self = this;
 
       if (((Boolean)(Stella.$PRINTREADABLYp$.get())).booleanValue()) {

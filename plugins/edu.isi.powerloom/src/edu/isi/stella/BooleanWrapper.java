@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 /** Objectified version of the BOOLEAN data type.  The NULL
@@ -133,7 +135,7 @@ public class BooleanWrapper extends LiteralWrapper {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { BooleanWrapper self = this;
 
       {

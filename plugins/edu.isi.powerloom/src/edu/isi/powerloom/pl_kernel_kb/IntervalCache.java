@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom.pl_kernel_kb;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.powerloom.logic.*;
@@ -368,7 +370,7 @@ public class IntervalCache extends Thing {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { IntervalCache self = this;
 
       {

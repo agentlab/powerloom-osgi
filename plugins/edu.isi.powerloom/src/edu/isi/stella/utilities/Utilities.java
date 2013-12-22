@@ -1351,7 +1351,7 @@ public class Utilities {
         int tok_tokenstart_ = -1;
         boolean tok_endoftokensP_ = false;
         TokenizerStreamState tok_streamstate_ = null;
-        byte[] tok_buffer_ = definition.getBytes();
+        char[] tok_buffer_ = definition.toCharArray();
         int tok_state_ = 1;
         int tok_nextstate_ = tok_state_;
         int tok_cursor_ = 0;

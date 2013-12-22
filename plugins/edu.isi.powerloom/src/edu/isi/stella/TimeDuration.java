@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 /** Representation of Relative Days and Time with the date represented
@@ -345,7 +347,7 @@ public class TimeDuration extends DateTimeObject {
     }
   }
 
-  public void printTimeDuration(java.io.PrintStream stream) {
+  public void printTimeDuration(PrintableStringWriter stream) {
     { TimeDuration date = this;
 
       stream.print("<" + date.timeDurationToString() + ">");
@@ -412,7 +414,7 @@ public class TimeDuration extends DateTimeObject {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { TimeDuration self = this;
 
       self.printTimeDuration(stream);

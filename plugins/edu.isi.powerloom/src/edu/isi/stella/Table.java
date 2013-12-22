@@ -45,6 +45,8 @@
 
 package edu.isi.stella;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.*;
 
 public class Table extends Slot {
@@ -129,7 +131,7 @@ public class Table extends Slot {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { Table self = this;
 
       stream.print("|T|" + self.slotName.symbolName);

@@ -45,6 +45,8 @@
 
 package edu.isi.powerloom.logic;
 
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
 import edu.isi.stella.*;
@@ -62,7 +64,7 @@ public class IntegerLogicWrapper extends IntegerWrapper {
     }
   }
 
-  public void printObject(java.io.PrintStream stream) {
+  public void printObject(PrintableStringWriter stream) {
     { IntegerLogicWrapper self = this;
 
       if (((Boolean)(Stella.$PRINTREADABLYp$.get())).booleanValue()) {
