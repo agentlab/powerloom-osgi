@@ -1,5 +1,7 @@
 package org.powerloom;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -22,15 +24,9 @@ public class PowerLoomService {
 		PLI.resetPowerloom();
 	}
 	
-	public void loadPlm(String path) {
-		InputStream inputStream = PowerLoomService.class.getResourceAsStream(path);
-		PushbackBufferedReader pbbr;
-		try {
-			pbbr = new PushbackBufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-			//PushbackInputStream pushbackInputStream = new PushbackInputStream(pbbr);
-			PLI.loadNativeStream(pbbr, null);
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+	public void loadPlm(String path) throws FileNotFoundException, UnsupportedEncodingException {
+		InputStream inputStream = new FileInputStream(path);
+		PushbackBufferedReader pbbr = new PushbackBufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+		PLI.loadNativeStream(pbbr, null);
 	}
 }

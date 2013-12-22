@@ -1,5 +1,8 @@
 package edu.isi.powerloom.tests;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 import org.junit.Test;
 import org.powerloom.PowerLoomService;
 
@@ -18,7 +21,11 @@ public class RuEncodingTest {
 	public void test() {
 		PowerLoomService pls = PowerLoomService.getInstance();
 		
-		pls.loadPlm("RuEncodingTest.plm");
+		try {
+			pls.loadPlm("RuEncodingTest.plm");
+		} catch (FileNotFoundException | UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		
 		//Module moduleKernel = PLI.getModule(MODULE_NAME_KERNEL, null);
 		Module moduleTest = PLI.getModule(MODULE_NAME_TEST, null);
