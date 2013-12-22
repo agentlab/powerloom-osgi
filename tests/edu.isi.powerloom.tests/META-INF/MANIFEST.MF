@@ -4,6 +4,7 @@ Bundle-Name: Powerloom
 Bundle-SymbolicName: edu.isi.powerloom.tests
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: edu.isi.powerloom,
- edu.isi.powerloom.server
+ edu.isi.powerloom.server,
+ org.junit
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
