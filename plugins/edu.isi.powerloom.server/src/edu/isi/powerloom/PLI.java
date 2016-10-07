@@ -1179,7 +1179,7 @@ public class PLI {
   /** Return a proposition matching <code>relationAndArguments</code> that
    * has been asserted (or inferred by forward chaining).  <code>relationAndArguments</code>
    * is a sequence containing objects and nulls.  The first argument must be the
-   * name of a relation.  A null value acts like a wild card.  If more than one 
+   * name of a relation.  A null value acts like a wild card.  If more than one
    * proposition matches the input criteria, the selection among satisficing
    * propositions is arbitrary.  This procedure is normally applied to single-valued
    * relations or functions.
@@ -1199,7 +1199,7 @@ public class PLI {
 
   /** Return a proposition matching <code>relationAndArguments</code> that
    * has been asserted (or inferred by forward chaining).  <code>relationAndArguments</code>
-   * is a string that begins with a left parenthesis, followed by a relation name, 
+   * is a string that begins with a left parenthesis, followed by a relation name,
    * one or more argument identifiers, and terminated by a right parenthesis.  Each
    * argument identifier can be the name of a logical constant, a literal
    * reference (e.g., a number), the null identifier, or a variable (an identifier that begins
@@ -1246,9 +1246,9 @@ public class PLI {
 
   /** Return propositions matching <code>relationAndArguments</code> that
    * have been asserted (or inferred by forward chaining).  <code>relationAndArguments</code>
-   * is a string that begins with a left parenthesis, followed by a relation name, 
+   * is a string that begins with a left parenthesis, followed by a relation name,
    * one or more argument identifiers, and terminated by a right parenthesis.  Each
-   * argument identifier can be the name of a logical constant, a literal 
+   * argument identifier can be the name of a logical constant, a literal
    * reference (e.g., a number), the null identifier, or a variable (an identifier that begins
    * with a question mark). Each occurrence of a null or a variable acts like a wild card.
    * <p>
@@ -1424,8 +1424,8 @@ public class PLI {
   /** Return all values <code>v</code> such that (<code>relationName</code> <code>argName</code> <code>v</code>)
    * has been asserted or can be inferred.
    * <p>
-   * A module name of <code>null</code> or the empty string refers to the current module. 
-   * If no module can be found with the name <code>moduleName</code>, then a Stella 
+   * A module name of <code>null</code> or the empty string refers to the current module.
+   * If no module can be found with the name <code>moduleName</code>, then a Stella
    * <code>noSuchContextException</code> is thrown.
    * @param relationName
    * @param argName
@@ -1484,8 +1484,8 @@ public class PLI {
 
   /** Return all propositions that have the object named <code>objectName</code> among
    * their arguments, and that are TRUE in the scope of the module <code>moduleName</code>.
-   * A module name of <code>null</code> or the empty string refers to the current module. 
-   * If no module can be found with the name <code>moduleName</code>, then a Stella 
+   * A module name of <code>null</code> or the empty string refers to the current module.
+   * If no module can be found with the name <code>moduleName</code>, then a Stella
    * <code>noSuchContextException</code> is thrown.
    * @param objectName
    * @param moduleName
@@ -1616,8 +1616,8 @@ public class PLI {
 
   /** Return TRUE if a proposition that prints as the string
    * <code>relationAndArguments</code> is true in the module named <code>moduleName</code>.
-   * A module name of <code>null</code> or the empty string refers to the current module. 
-   * If no module can be found with the name <code>moduleName</code>, then a Stella 
+   * A module name of <code>null</code> or the empty string refers to the current module.
+   * If no module can be found with the name <code>moduleName</code>, then a Stella
    * <code>noSuchContextException</code> is thrown.
    * @param relationAndArguments
    * @param moduleName
@@ -1881,8 +1881,8 @@ public class PLI {
    * Include instances of subconcepts of <code>conceptName</code>.  Depending on <code>conceptName</code>,
    * the return values could be (wrapped) literals.
    * <p>
-   * A module name of <code>null</code> or the empty string refers to the current module. 
-   * If no module can be found with the name <code>moduleName</code>, then a Stella 
+   * A module name of <code>null</code> or the empty string refers to the current module.
+   * If no module can be found with the name <code>moduleName</code>, then a Stella
    * <code>noSuchContextException</code> is thrown.
    * @param conceptName
    * @param moduleName
@@ -1947,8 +1947,8 @@ public class PLI {
    * Exclude instances of subconcepts of <code>conceptName</code>.  Depending on <code>conceptName</code>,
    * the return values could be (wrapped) literals.
    * <p>
-   * A module name of <code>null</code> or the empty string refers to the current module. 
-   * If no module can be found with the name <code>moduleName</code>, then a Stella 
+   * A module name of <code>null</code> or the empty string refers to the current module.
+   * If no module can be found with the name <code>moduleName</code>, then a Stella
    * <code>noSuchContextException</code> is thrown.
    * @param conceptName
    * @param moduleName
@@ -2531,8 +2531,8 @@ public class PLI {
    * system-generated if no concept nameis specified.  If <code>conceptName</code> is the null string, then
    * the object will be of type THING.
    * <p>
-   * A module name of <code>null</code> or the empty string refers to the current module. 
-   * If no module can be found with the name <code>moduleName</code>, then a Stella 
+   * A module name of <code>null</code> or the empty string refers to the current module.
+   * If no module can be found with the name <code>moduleName</code>, then a Stella
    * <code>noSuchContextException</code> is thrown.
    * <p>
    * Note that because names in modules that are not case-sensitive are canonicalized,
@@ -2598,8 +2598,8 @@ public class PLI {
    * <code>subsetOf</code> relation.  Note that a specified parent concept needs to be
    * created separately.
    * <p>
-   * A module name of <code>null</code> or the empty string refers to the current module. 
-   * If no module can be found with the name <code>moduleName</code>, then a Stella 
+   * A module name of <code>null</code> or the empty string refers to the current module.
+   * If no module can be found with the name <code>moduleName</code>, then a Stella
    * <code>noSuchContextException</code> is thrown.
    * <p>
    * Note that because names in modules that are not case-sensitive are canonicalized,
@@ -2706,8 +2706,8 @@ public class PLI {
    * designated module.  Domain and range information can be added via assertions
    * of <code>nthDomain</code> (or <code>domain</code> and <code>range</code>) relations.
    * <p>
-   * A module name of <code>null</code> or the empty string refers to the current module. 
-   * If no module can be found with the name <code>moduleName</code>, then a Stella 
+   * A module name of <code>null</code> or the empty string refers to the current module.
+   * If no module can be found with the name <code>moduleName</code>, then a Stella
    * <code>noSuchContextException</code> is thrown.
    * <p>
    * Note that because names in modules that are not case-sensitive are canonicalized,
@@ -2722,7 +2722,7 @@ public class PLI {
     return (PLI.createRelation(name, arity, ((Module)(PLI.safelyGetModule(moduleName, environment))), environment));
   }
 
-  /** Create a function named <code>name</code> with arity <code>arity</code>  in the designated 
+  /** Create a function named <code>name</code> with arity <code>arity</code>  in the designated
    * <code>module</code>.  Domain and range information can be added via assertions of
    * <code>nthDomain</code> (or <code>domain</code> and <code>range</code>) relations.
    * <p>
@@ -2807,12 +2807,12 @@ public class PLI {
     }
   }
 
-  /** Create a function named <code>name</code> with arity <code>arity</code> in the designated 
+  /** Create a function named <code>name</code> with arity <code>arity</code> in the designated
    * module.  Domain and range information can be added via assertions of
    * <code>domain</code>, <code>nthDomain</code> and <code>range</code> relations.
    * <p>
-   * A module name of <code>null</code> or the empty string refers to the current module. 
-   * If no module can be found with the name <code>moduleName</code>, then a Stella 
+   * A module name of <code>null</code> or the empty string refers to the current module.
+   * If no module can be found with the name <code>moduleName</code>, then a Stella
    * <code>noSuchContextException</code> is thrown.
    * <p>
    * Note that because names in modules that are not case-sensitive are canonicalized,
@@ -2835,7 +2835,7 @@ public class PLI {
    * <p>
    * The exact form of <code>functionReference</code> depends on the underlying
    * programming language.  The following type mappings are used:
-   *           C++:  
+   *           C++:
    *   Common Lisp:  FUNCTION   (result of #' or (FUNCTION ...))
    *          Java:  java.lang.reflect.Method
    * @param name
@@ -3101,8 +3101,8 @@ public class PLI {
   /** Delete the object named <code>objectName</code>, retracting all facts
    * attached to it.
    * <p>
-   * A module name of <code>null</code> or the empty string refers to the current module. 
-   * If no module can be found with the name <code>moduleName</code>, then a Stella 
+   * A module name of <code>null</code> or the empty string refers to the current module.
+   * If no module can be found with the name <code>moduleName</code>, then a Stella
    * <code>noSuchContextException</code> is thrown.
    * @param objectName
    * @param moduleName
@@ -4065,7 +4065,7 @@ public class PLI {
   /** Read logic commands from the STELLA stream <code>stream</code> and evaluate them.
    * If the stream does not supply an <code>inModule</code> declaration that specifies the
    * module within which all remaining commands are to be evaluated, it will be
-   * loaded in the <code>module</code> specified.  If no <code>module</code> is specified and the file 
+   * loaded in the <code>module</code> specified.  If no <code>module</code> is specified and the file
    * does not supply an <code>inModule</code> declaration, an error will be signaled.
    * The remaining commands are evaluated one-by-one, applying the function
    * <code>evaluate</code> to each of them.
@@ -4110,7 +4110,7 @@ public class PLI {
    * @param stream
    * @param environment
    */
-  public static void loadNativeStream(java.io.PushbackInputStream stream, Environment environment) {
+  public static void loadNativeStream(org.powerloom.PushbackBufferedReader stream, Environment environment) {
     { Module mdl000 = ((Module)(Stella.$MODULE$.get()));
       Context cxt000 = mdl000;
 
@@ -4146,7 +4146,7 @@ public class PLI {
    * not generate the best efficiency for block-buffered streams such as files.
    * If the stream does not supply an <code>inModule</code> declaration that specifies the
    * module within which all remaining commands are to be evaluated, it will be
-   * loaded in the <code>module</code> specified.  If no <code>module</code> is specified and the file 
+   * loaded in the <code>module</code> specified.  If no <code>module</code> is specified and the file
    * does not supply an <code>inModule</code> declaration, an error will be signaled.
    * The remaining commands are evaluated one-by-one, applying the function
    * <code>evaluate</code> to each of them.
@@ -4154,7 +4154,7 @@ public class PLI {
    * @param module
    * @param environment
    */
-  public static void loadNativeStreamInModule(java.io.PushbackInputStream stream, Module module, Environment environment) {
+  public static void loadNativeStreamInModule(org.powerloom.PushbackBufferedReader stream, Module module, Environment environment) {
     { Module mdl000 = module;
       Context cxt000 = mdl000;
 
@@ -4192,7 +4192,7 @@ public class PLI {
    *   REPLACE =&gt; Means overwrite without warning.
    *   WARN    =&gt; Means overwrite with a warning.
    *   ERROR   =&gt; Means don't overwrite, signal an error instead.
-   *   ASK     =&gt; Ask the user whether to overwrite or not.  If not overwritten, an 
+   *   ASK     =&gt; Ask the user whether to overwrite or not.  If not overwritten, an
    *              exception is thrown.
    * @param module
    * @param filename
@@ -4449,7 +4449,7 @@ public class PLI {
    * <p>
    * <p>
    * As a special case, a column number of zero will also return <code>sequence</code> itself
-   * as a string if it is not one of the types enumerated above.  This is done to 
+   * as a string if it is not one of the types enumerated above.  This is done to
    * allow the use of <code>getNthString</code> on PL-iterators with only a single return variable.
    * @param sequence
    * @param n
@@ -4799,16 +4799,16 @@ public class PLI {
    * <code>query</code> has the same syntax as the PowerLoom <code>ask</code> command (which see)
    * but with the <code>ask</code> operator omitted.  For example, here are some legal
    * <code>query</code> arguments:
-   * 	 
+   *
    *     ((happy Fred))
    *     ((happy Fred) :inference-level :assertion)
    *     ((happy Fred) :inference-level :assertion :timeout 1.0)
-   * 	
+   *
    * As a convenience, a <code>query</code> argument whose first element is a symbol is
    * interpreted as a sentence that is queried without any options.  For example:
-   * 	 
+   *
    *     (happy Fred)
-   * 	
+   *
    * is a legal <code>query</code> argument.  Note that for a sentence whose relation is a list
    * itself, e.g., <code>__FruitFn_BananaTree__MyBanana_</code> this shortcut is not available,
    * that is, in that case an extra level of list nesting is always necessary.
@@ -4856,11 +4856,11 @@ public class PLI {
    * with the <code>ask</code> operator omitted.  Different from the PLI <code>ask</code> function, <code>sAsk</code>
    * does not expect a top-level pair of parentheses.  For example, here are some legal
    * <code>query</code> arguments:
-   * 	 
+   *
    *     &quot;(happy Fred)&quot;
    *     &quot;(happy Fred) :inference-level :assertion&quot;
    *     &quot;(happy Fred) :inference-level :assertion :timeout 1.0&quot;
-   * 	
+   *
    * Names in <code>query</code> will be interpreted relative to module <code>moduleName</code>.
    * A null <code>moduleName</code> or the empty string refers to the current module.
    * If no module can be found with the name <code>moduleName</code>, then a STELLA
@@ -4934,21 +4934,21 @@ public class PLI {
    * run in <code>module</code> and relative to <code>environment</code>.  <code>query</code> has the same syntax
    * as the PowerLoom <code>retrieve</code> command (which see) but with the <code>retrieve</code>
    * operator omitted.    For example, here are some legal <code>query</code> arguments:
-   * 	 
+   *
    *     ((happy ?x))
    *     (10 (happy ?x))
    *     (all (happy ?x))
    *     (all ?x (happy ?x))
    *     (10 (happy ?x) :inference-level :assertion)
    *     (10 (happy ?x) :inference-level :assertion :timeout 1.0)
-   * 	
+   *
    * If there is only a single output variable (as in all the examples above)
    * each element generated by the returned iterator will be a binding for
    * that variable - unless, the output variable was declared with a surrounding
    * pair of parentheses.  For example:
-   * 	 
+   *
    *     (all (?x) (happy ?x))
-   * 	
+   *
    * In that case, the generated elements will be one-element lists.  If there
    * are multiple output variables, each element generated by the returned
    * iterator will be a list of variable bindings that can be accessed using
@@ -4997,21 +4997,21 @@ public class PLI {
    * operator omitted.  Different from the PLI <code>retrieve</code> function, <code>sRetrieve</code>
    * does not expect a top-level pair of parentheses.  For example, here are some
    * legal <code>query</code> arguments:
-   * 	 
+   *
    *     &quot;(happy ?x)&quot;
    *     &quot;10 (happy ?x)&quot;
    *     &quot;all (happy ?x)&quot;
    *     &quot;all ?x (happy ?x)&quot;
    *     &quot;10 (happy ?x) :inference-level :assertion&quot;
    *     &quot;10 (happy ?x) :inference-level :assertion :timeout 1.0&quot;
-   * 	
+   *
    * If there is only a single output variable (as in all the examples above)
    * each element generated by the returned iterator will be a binding for
    * that variable - unless, the output variable was declared with a surrounding
    * pair of parentheses.  For example:
-   * 	 
+   *
    *     &quot;all (?x) (happy ?x)&quot;
-   * 	
+   *
    * In that case, the generated elements will be one-element lists.  If there
    * are multiple output variables, each element generated by the returned
    * iterator will be a list of variable bindings that can be accessed using

@@ -1,11 +1,11 @@
 # Dirs With Binaries #
-/**/plugins/*/bin/
-/**/plugins/*/lib/
-/**/plugins/*/target/
-/**/plugins/*/xtend-gen/
-/**/plugins/*/src-gen/
-/**/plugins/*/classes/
-/**/temp
+bin
+lib
+target
+xtend-gen
+src-gen
+classes
+temp
 
 # Binary Files #
 *.class
@@ -25,7 +25,9 @@
 
 # Temporary Files #
 *.bak
+*.log
 
 # Data Files #
 *.dat
 *.idn
+*.target

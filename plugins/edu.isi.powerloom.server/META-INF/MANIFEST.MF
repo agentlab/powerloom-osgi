@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Powerloom
 Bundle-SymbolicName: edu.isi.powerloom.server
 Bundle-Version: 4.0.6.qualifier
-Require-Bundle: edu.isi.powerloom;bundle-version="4.0.6"
 Bundle-ActivationPolicy: lazy
 Export-Package: edu.isi.ontosaurus,
  edu.isi.powerloom,
@@ -25,4 +24,9 @@ Export-Package: edu.isi.ontosaurus,
  edu.isi.webtools.objects.xmlschema,
  edu.isi.webtools.objects.xmlschemainstance,
  edu.isi.webtools.soap
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: edu.isi.stella,
+ edu.isi.stella.javalib,
+ edu.isi.stella.utilities,
+ org.powerloom
+Require-Bundle: edu.isi.powerloom;bundle-version="4.0.6"

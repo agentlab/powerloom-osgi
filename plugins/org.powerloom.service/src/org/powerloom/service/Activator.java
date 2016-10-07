@@ -1,4 +1,4 @@
-package org.powerloom;
+package org.powerloom.service;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

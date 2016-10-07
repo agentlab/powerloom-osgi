@@ -136,14 +136,14 @@ public class ShellProcess extends StandardObject {
         InputStream input = self.inputStream;
         OutputStream output = self.outputStream;
         OutputStream error = self.errorStream;
-        java.io.PrintStream stdin = null;
+        org.powerloom.PrintableStringWriter stdin = null;
         java.io.PushbackInputStream stdout = null;
         java.io.PushbackInputStream stderr = null;
 
         try {
          process = Runtime.getRuntime().exec(command, null, new java.io.File(directory));
          if (input != null)
-            stdin = new java.io.PrintStream(process.getOutputStream());
+            stdin = new org.powerloom.PrintableStringWriter(process.getOutputStream());
          if (output != null)
             stdout = new java.io.PushbackInputStream
                         (new edu.isi.stella.javalib.FlushableBufferedInputStream(process.getInputStream()));

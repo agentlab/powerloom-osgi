@@ -100,28 +100,28 @@ public class OntosaurusUtil {
 
   /** A function that takes two arguments, a Stella Proposition
    * and a NATIVE-(?) OUTPUT-STREAM, and writes something that precedes the
-   * normal printed representation of a proposition.   This will only be called 
+   * normal printed representation of a proposition.   This will only be called
    * on <code>PROPOSITION</code> objects.
    */
   public final static StellaSpecialVariable $PPRINT_BEFORE_PROPOSITION_FUNCTION$ = new StellaSpecialVariable();
 
   /** A function that takes two arguments, a Stella Proposition
    * and a NATIVE-(?) OUTPUT-STREAM, and writes something that precedes the
-   * normal printed representation of a proposition.   This will only be called 
+   * normal printed representation of a proposition.   This will only be called
    * on <code>PROPOSITION</code> objects.
    */
   public final static StellaSpecialVariable $PPRINT_AFTER_PROPOSITION_FUNCTION$ = new StellaSpecialVariable();
 
   /** A function that takes two arguments, a Stella Definition
    * and a NATIVE-(?) OUTPUT-STREAM, and writes something that precedes the
-   * normal printed representation of a definition.   This will only be called 
+   * normal printed representation of a definition.   This will only be called
    * on <code>DEFINITION</code> objects.
    */
   public final static StellaSpecialVariable $PPRINT_BEFORE_DEFINITION_FUNCTION$ = new StellaSpecialVariable();
 
   /** A function that takes two arguments, a Stella Definition
    * and a NATIVE-(?) OUTPUT-STREAM, and writes something that precedes the
-   * normal printed representation of a definition.   This will only be called 
+   * normal printed representation of a definition.   This will only be called
    * on <code>DEFINITION</code> objects.
    */
   public final static StellaSpecialVariable $PPRINT_AFTER_DEFINITION_FUNCTION$ = new StellaSpecialVariable();
@@ -281,7 +281,7 @@ public class OntosaurusUtil {
   public static Symbol SYM_ONTOSAURUS_STARTUP_TOP_WINDOW = null;
 
   /** A list of preset queries to make entry easier.  Format is
-   * (&quot;Title&quot; &quot;ModuleName&quot; &quot;QueryBody&quot;) 
+   * (&quot;Title&quot; &quot;ModuleName&quot; &quot;QueryBody&quot;)
    */
   public final static StellaSpecialVariable $PRESET_QUERIES$ = new StellaSpecialVariable();
 
@@ -459,7 +459,7 @@ public class OntosaurusUtil {
     stream.println("<BR>");
   }
 
-  public static void htmlWriteUrlInDetail(java.io.PrintStream stream, String action, String objecttype, String contextname, String objectname) {
+  public static void htmlWriteUrlInDetail(org.powerloom.PrintableStringWriter stream, String action, String objecttype, String contextname, String objectname) {
     stream.print("/ploom/ontosaurus/do-action?" + action + "+" + objecttype + "+");
     Stella.writeHtmlEscapingUrlSpecialCharacters(stream, contextname);
     stream.print("+");
@@ -1712,9 +1712,9 @@ public class OntosaurusUtil {
         }
       }
       switch (self.length()) {
-        case 0: 
+        case 0:
         break;
-        case 1: 
+        case 1:
           { Stella_Object m = null;
             Iterator iter000 = ((Iterator)(self.allocateIterator()));
 
@@ -1724,8 +1724,8 @@ public class OntosaurusUtil {
             }
           }
         break;
-        case 2: 
-        case 3: 
+        case 2:
+        case 3:
           { Stella_Object m = null;
             Iterator iter001 = ((Iterator)(self.allocateIterator()));
 
@@ -1770,25 +1770,25 @@ public class OntosaurusUtil {
     stream.print("(");
     Native.setIntSpecial(OntosaurusUtil.$PPRINT_INDENT$, ((Integer)(OntosaurusUtil.$PPRINT_INDENT$.get())).intValue() + 1);
     switch (self.length()) {
-      case 0: 
+      case 0:
       break;
-      case 1: 
+      case 1:
         OntosaurusUtil.pprintObject(self.value, stream);
       break;
-      case 2: 
+      case 2:
         OntosaurusUtil.pprintObject(self.value, stream);
         stream.print(" ");
         OntosaurusUtil.pprintObject(self.rest.value, stream);
       break;
-      case 3: 
+      case 3:
         OntosaurusUtil.pprintObject(self.value, stream);
         stream.print(" ");
         OntosaurusUtil.pprintObject(self.rest.value, stream);
         stream.print(" ");
         OntosaurusUtil.pprintObject(self.rest.rest.value, stream);
       break;
-      case 4: 
-      case 5: 
+      case 4:
+      case 5:
         OntosaurusUtil.pprintObject(self.value, stream);
         { Stella_Object obj = null;
           Cons iter000 = self.rest;
@@ -3835,10 +3835,10 @@ public class OntosaurusUtil {
           { List candidateobjects = OntosaurusUtil.findCandidateObjects(objectname, objecttype, matchtype);
 
             switch (candidateobjects.length()) {
-              case 0: 
+              case 0:
                 OntosaurusUtil.htmlUnknownObjectResponse((Stella.stringEqlP(objecttype, "instance") ? OntosaurusUtil.KWD_OBJECT : OntosaurusUtil.KWD_RELATION), objectname, stream);
               break;
-              case 1: 
+              case 1:
                 { Surrogate testValue000 = Stella_Object.safePrimaryType(((LogicObject)(candidateobjects.first())));
 
                   if (Surrogate.subtypeOfP(testValue000, OntosaurusUtil.SGT_LOGIC_NAMED_DESCRIPTION)) {
@@ -4857,7 +4857,7 @@ public class OntosaurusUtil {
         for (;index000 < length000; index000 = index000 + 1) {
           renamed_Char = vector000.charAt(index000);
           switch (renamed_Char) {
-            case ' ': 
+            case ' ':
               if (solP) {
                 edu.isi.stella.javalib.Native.mutableString_nthSetter(buffer, '.', (i = i + 1));
               }
@@ -4865,19 +4865,19 @@ public class OntosaurusUtil {
                 edu.isi.stella.javalib.Native.mutableString_nthSetter(buffer, renamed_Char, (i = i + 1));
               }
             break;
-            case '\n': 
-            case '\r': 
+            case '\n':
+            case '\r':
               edu.isi.stella.javalib.Native.mutableString_nthSetter(buffer, '\\', (i = i + 1));
               edu.isi.stella.javalib.Native.mutableString_nthSetter(buffer, 'l', (i = i + 1));
               solP = true;
             break;
-            case '"': 
-            case '{': 
-            case '}': 
-            case '|': 
-            case '<': 
-            case '>': 
-            case '\\': 
+            case '"':
+            case '{':
+            case '}':
+            case '|':
+            case '<':
+            case '>':
+            case '\\':
               edu.isi.stella.javalib.Native.mutableString_nthSetter(buffer, '\\', (i = i + 1));
               edu.isi.stella.javalib.Native.mutableString_nthSetter(buffer, renamed_Char, (i = i + 1));
               solP = false;
