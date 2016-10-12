@@ -8,5 +8,9 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: AgentLab
 Import-Package: edu.isi.powerloom,
  edu.isi.stella,
+ edu.isi.stella.javalib,
  org.osgi.framework;version="1.8.0",
  org.powerloom
+Bundle-ActivationPolicy: lazy
+Export-Package: org.pl.stellaj,
+ org.powerloom.service

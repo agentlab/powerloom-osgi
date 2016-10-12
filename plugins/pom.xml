@@ -16,7 +16,9 @@
 	
 	<modules>
 		<module>edu.isi.powerloom</module>
-		<!--<module>edu.isi.powerloom.server</module>-->
+		<!--<module>edu.isi.ontosaurus</module>
+		<module>edu.isi.webtools</module>
+		<module>edu.isi.powerloom.server</module>-->
 		<module>edu.isi.sdbc</module>
 		<module>edu.isi.stella</module>
 		<module>org.powerloom</module>

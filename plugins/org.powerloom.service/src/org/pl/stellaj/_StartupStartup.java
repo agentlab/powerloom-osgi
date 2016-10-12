@@ -16,9 +16,9 @@ import edu.isi.stella.javalib.Native;
 public class _StartupStartup {
 
 	private static final _StartupStartup init = new _StartupStartup();
-	
+
 	private Stellaj stella = Stellaj.getInstance();
-	
+
 	abstract class StartupHandler implements InitHandler {
 		public abstract void handle2();
 		@Override
@@ -28,7 +28,7 @@ public class _StartupStartup {
 			try {
 		        Native.setSpecial(Stella.$MODULE$, Stella.$STELLA_MODULE$);
 		        Native.setSpecial(Stella.$CONTEXT$, ((Module)(Stella.$MODULE$.get())));
-		        
+
 		        handle2();
 			} finally {
 		        Stella.$CONTEXT$.set(old$Context$000);
@@ -44,21 +44,21 @@ public class _StartupStartup {
 				Stella.KWD_QUOTED_CONSTANTS = ((Keyword) (GeneralizedSymbol.internRigidSymbolWrtModule("QUOTED-CONSTANTS", null, 2)));
 				Stella.SYM_STELLA_STARTUP_STARTUP = ((Symbol) (GeneralizedSymbol.internRigidSymbolWrtModule("STARTUP-STARTUP", null, 0)));
 		}});
-		
-		
+
+
 		stella.addInitializer(Stellaj.STAGES.GLOBAL_VARS, 0, new StartupHandler() {
 			@Override
 			public void handle2() {
 				Stella.$STELLA_VERSION_STRING$ = Stella.stellaVersionString();
 		        Stella.$STARTUP_TIME_PHASES$ = ((List)(List.list(Cons.cons(Stella.KWD_EARLY_INITS, Cons.cons(Stella.KWD_MODULES, Cons.cons(Stella.KWD_SYMBOLS, Cons.cons(Stella.KWD_QUOTED_CONSTANTS, Cons.cons(Stella.KWD_GLOBALS, Cons.cons(Stella.KWD_CLASSES, Cons.cons(Stella.KWD_FINALIZE_CLASSES, Cons.cons(Stella.KWD_METHODS, Cons.cons(Stella.KWD_FINALIZE_METHODS, Cons.cons(Stella.KWD_FINAL, Stella.NIL)))))))))))));
 		}});
-		
+
 		stella.addInitializer(Stellaj.STAGES.CLASS_FINALIZING, 0, new StartupHandler() {
 			@Override
 			public void handle2() {
 				Stella.finalizeClasses();
 		}});
-		
+
 		stella.addInitializer(Stellaj.STAGES.METOD_OBJS, 0, new StartupHandler() {
 			@Override
 			public void handle2() {
@@ -80,14 +80,14 @@ public class _StartupStartup {
 		        	KeyValueList.setDynamicSlotValue(function.dynamicSlots, Stella.SYM_STELLA_METHOD_STARTUP_CLASSNAME, StringWrapper.wrapString("_StartupStartup"), Stella.NULL_STRING_WRAPPER);
                 }
 		}});
-		
+
 		stella.addInitializer(Stellaj.STAGES.FINALIZING_METHODS, 0, new StartupHandler() {
 			@Override
 			public void handle2() {
 				Stella.finalizeSlots();
 		        Stella.cleanupUnfinalizedClasses();
 		}});
-		
+
 		stella.addInitializer(Stellaj.STAGES.OTHER, 0, new StartupHandler() {
 			@Override
 			public void handle2() {
@@ -100,5 +100,5 @@ public class _StartupStartup {
 		        Stella.defineStellaGlobalVariableFromStringifiedSource("(DEFGLOBAL *STARTUP-TIME-PHASES* (LIST OF KEYWORD) (CAST (LIST :EARLY-INITS :MODULES :SYMBOLS :QUOTED-CONSTANTS :GLOBALS :CLASSES :FINALIZE-CLASSES :METHODS :FINALIZE-METHODS :FINAL) (LIST OF KEYWORD)) :DOCUMENTATION \"List of phases that can be legally used as an optional\nphase argument to a `startup-time-progn' form.  The corresponding code\nwill be executed during the execution of a startup-time-code function only\nif the position of the keyword in the list corresponds to the current value of\n`*STARTUP-TIME-PHASE*', or if phasing of startup-time code is disabled.\")");
 		        Stella.defineStellaGlobalVariableFromStringifiedSource("(DEFGLOBAL *STARTUP-TIME-PHASE* INTEGER 999 :PUBLIC? TRUE :DOCUMENTATION \"The current phase during 'phased startup'.\nThe value has to correspond to the position of one of the keywords\nin `*STARTUP-TIME-PHASES*'.  999 means no phasing at all.\")");
 		}});
-	}	
+	}
 }

@@ -9,4 +9,5 @@ Export-Package: edu.isi.stella,
  edu.isi.stella.utilities
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: AgentLab
-Import-Package: org.powerloom
+Import-Package: edu.isi.stella.javalib,
+ org.powerloom

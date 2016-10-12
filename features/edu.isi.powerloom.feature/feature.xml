@@ -28,6 +28,20 @@
          unpack="false"/>
 
    <!--<plugin
+         id="edu.isi.ontosaurus"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+	<plugin
+         id="edu.isi.webtools"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+	<plugin
          id="edu.isi.powerloom.server"
          download-size="0"
          install-size="0"
