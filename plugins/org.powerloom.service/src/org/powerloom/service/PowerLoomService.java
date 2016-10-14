@@ -28,7 +28,7 @@ public class PowerLoomService {
 
 	public void loadPlm(String path) throws FileNotFoundException, UnsupportedEncodingException {
 		InputStream inputStream = new FileInputStream(path);
-		PushbackBufferedReader pbbr = new PushbackBufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+		PushbackBufferedReader pbbr = new PushbackBufferedReader(inputStream, "UTF-8");
 		PLI.loadNativeStream(pbbr, null);
 	}
 }

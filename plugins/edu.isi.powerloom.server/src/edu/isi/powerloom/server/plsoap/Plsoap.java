@@ -172,7 +172,7 @@ public class Plsoap {
    */
   public static void powerloomSoapRequestHandler(edu.isi.webtools.http.HttpExchange xchg) {
     { String request = edu.isi.webtools.http.HttpExchange.getRequestBody(xchg);
-      java.io.PrintStream reply = edu.isi.webtools.http.HttpExchange.getReplyStream(xchg);
+    org.powerloom.PrintableStringWriter reply = edu.isi.webtools.http.HttpExchange.getReplyStream(xchg);
 
       reply.print(Plsoap.powerloomProcessSoapRequest(request));
     }

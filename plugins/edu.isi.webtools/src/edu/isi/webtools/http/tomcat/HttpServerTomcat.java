@@ -138,7 +138,7 @@ public class HttpServerTomcat extends HttpServer {
     }
   }
 
-  public java.io.PrintStream getReplyStreamImpl(HttpExchange xchg) {
+  public org.powerloom.PrintableStringWriter getReplyStreamImpl(HttpExchange xchg) {
     { HttpServerTomcat server = this;
 
       { HttpExchangeTomcat jxchg = ((HttpExchangeTomcat)(xchg));
@@ -148,7 +148,7 @@ public class HttpServerTomcat extends HttpServer {
           jstream = new edu.isi.stella.javalib.PrintStringStream();
           jxchg.replyStream = jstream;
         }
-        return (jstream);
+        return (new org.powerloom.PrintableStringWriter(jstream));
       }
     }
   }
@@ -186,10 +186,10 @@ public class HttpServerTomcat extends HttpServer {
 
           self000.bufferingScheme = Tomcat.KWD_BLOCK;
           { InputStream bodystream = self000;
-            java.io.PushbackInputStream body = null;
+          org.powerloom.PushbackBufferedReader body = null;
 
             try {
-         body = new java.io.PushbackInputStream(jreq.getInputStream());
+         body = new org.powerloom.PushbackBufferedReader(jreq.getInputStream());
        }
        catch (java.io.IOException e) {
          Native.rethrowAsStellaException(e, InputOutputException.class, "getRequestBodyImpl: ", true);

@@ -1305,7 +1305,7 @@ public class GuiServer {
 
       if (Logic.skolemP(obj)) {
         { OutputStringStream resultstream = OutputStringStream.newOutputStringStream();
-          java.io.PrintStream nativestream = resultstream.nativeStream;
+          org.powerloom.PrintableStringWriter nativestream = resultstream.nativeStream;
           String printname = null;
 
           { Object old$PrintreadablyP$000 = Stella.$PRINTREADABLYp$.get();
@@ -2091,7 +2091,7 @@ public class GuiServer {
             }
             else {
               { OutputStringStream resultstream = OutputStringStream.newOutputStringStream();
-                java.io.PrintStream nativestream = resultstream.nativeStream;
+                org.powerloom.PrintableStringWriter nativestream = resultstream.nativeStream;
 
                 { Object old$PrintreadablyP$000 = Stella.$PRINTREADABLYp$.get();
                   Object old$PrintprettyP$000 = Stella.$PRINTPRETTYp$.get();
@@ -2307,7 +2307,7 @@ public class GuiServer {
     }
   }
 
-  public static void writeHtmlCharacterQuotingChokableCharacters(java.io.PrintStream stream, char ch) {
+  public static void writeHtmlCharacterQuotingChokableCharacters(org.powerloom.PrintableStringWriter stream, char ch) {
     if (((int) ch == 10) ||
         ((int) ch > 127)) {
       stream.print("&#" + (int) ch + ";");
@@ -2317,7 +2317,7 @@ public class GuiServer {
     }
   }
 
-  public static void writeHtmlQuotingChokableCharacters(java.io.PrintStream stream, String input) {
+  public static void writeHtmlQuotingChokableCharacters(org.powerloom.PrintableStringWriter stream, String input) {
     { char ch = Stella.NULL_CHARACTER;
       String vector000 = input;
       int index000 = 0;
@@ -3354,7 +3354,7 @@ public class GuiServer {
 
       try {
         Native.setSpecial(Logic.$LOGIC_DIALECT$, GuiServer.KWD_KIF);
-        Native.setSpecial(edu.isi.ontosaurus.OntosaurusUtil.$PPRINT_ATOMIC_OBJECT_RENDERER$, Native.find_java_method("edu.isi.powerloom.server.gui.GuiServer", "plguiHtmlPprintAtomicObject", new java.lang.Class [] {Native.find_java_class("edu.isi.stella.Stella_Object"), Native.find_java_class("java.io.PrintStream")}));
+        Native.setSpecial(edu.isi.ontosaurus.OntosaurusUtil.$PPRINT_ATOMIC_OBJECT_RENDERER$, Native.find_java_method("edu.isi.powerloom.server.gui.GuiServer", "plguiHtmlPprintAtomicObject", new java.lang.Class [] {Native.find_java_class("edu.isi.stella.Stella_Object"), Native.find_java_class("org.powerloom.PrintableStringWriter")}));
         if (Surrogate.subtypeOfP(Stella_Object.safePrimaryType(self), GuiServer.SGT_LOGIC_PROPOSITION)) {
           { Proposition self000 = ((Proposition)(self));
 
@@ -3388,7 +3388,7 @@ public class GuiServer {
     }
   }
 
-  public static void plguiHtmlPprintAtomicObject(Stella_Object self, java.io.PrintStream stream) {
+  public static void plguiHtmlPprintAtomicObject(Stella_Object self, org.powerloom.PrintableStringWriter stream) {
     if (!(self == null)) {
       { Surrogate testValue000 = Stella_Object.safePrimaryType(self);
 
@@ -3491,11 +3491,11 @@ public class GuiServer {
    * @param theObject
    * @param nativestream
    */
-  public static void printPlguiUrl(LogicObject theObject, java.io.PrintStream nativestream) {
+  public static void printPlguiUrl(LogicObject theObject, org.powerloom.PrintableStringWriter nativestream) {
     GuiServer.plguiWriteUrl(nativestream, ((String)(GuiServer.$PLGUI_URL_ACTION$.get())), edu.isi.ontosaurus.OntosaurusUtil.logicObjectDisplayType(theObject), theObject);
   }
 
-  public static void plguiWriteUrlInDetail(java.io.PrintStream stream, String target, String action, String objecttype, String contextname, String objectname, String objecttitle, boolean rawtitleP) {
+  public static void plguiWriteUrlInDetail(org.powerloom.PrintableStringWriter stream, String target, String action, String objecttype, String contextname, String objectname, String objecttitle, boolean rawtitleP) {
     action = action;
     stream.print("<A ");
     if (target != null) {
@@ -3516,7 +3516,7 @@ public class GuiServer {
     return;
   }
 
-  public static void plguiWriteUrl(java.io.PrintStream stream, String action, String objecttype, StandardObject renamed_Object) {
+  public static void plguiWriteUrl(org.powerloom.PrintableStringWriter stream, String action, String objecttype, StandardObject renamed_Object) {
     { Surrogate testValue000 = Stella_Object.safePrimaryType(renamed_Object);
 
       if (Surrogate.subtypeOfP(testValue000, GuiServer.SGT_LOGIC_LOGIC_OBJECT)) {

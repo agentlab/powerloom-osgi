@@ -14,45 +14,40 @@ public class PrintableStringWriter extends OutputStreamWriter {
 		try {
 			super.write("\n");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void println(String str) {
 		try {
 			super.write(str);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		println();
 	}
-	
+
 	public void println(Object o) {
 		try {
 			super.write(o.toString());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		println();
 	}
-	
+
 	public void print(String str) {
 		try {
 			super.write(str);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void print(Object o) {
 		try {
 			super.write(o.toString());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

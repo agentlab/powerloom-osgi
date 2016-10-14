@@ -455,7 +455,7 @@ public class OntosaurusUtil {
     return ("BODY BGCOLOR='" + backgroundcolor + "'");
   }
 
-  public static void htmlLineBreak(java.io.PrintStream stream) {
+  public static void htmlLineBreak(org.powerloom.PrintableStringWriter stream) {
     stream.println("<BR>");
   }
 
@@ -466,7 +466,7 @@ public class OntosaurusUtil {
     Stella.writeHtmlEscapingUrlSpecialCharacters(stream, objectname);
   }
 
-  public static void htmlWrite3PartHrefInDetail(java.io.PrintStream stream, String target, String action, String objectType, String contextName, String objectName, String objectTitlePrefix, String objectTitle, String objectTitleSuffix, boolean rawtitleP) {
+  public static void htmlWrite3PartHrefInDetail(org.powerloom.PrintableStringWriter stream, String target, String action, String objectType, String contextName, String objectName, String objectTitlePrefix, String objectTitle, String objectTitleSuffix, boolean rawtitleP) {
     stream.print("<A ");
     if (target != null) {
       stream.print("TARGET='" + target + "' ");
@@ -502,11 +502,11 @@ public class OntosaurusUtil {
     return;
   }
 
-  public static void htmlWriteHrefInDetail(java.io.PrintStream stream, String target, String action, String objecttype, String contextname, String objectname, String objecttitle, boolean rawtitleP) {
+  public static void htmlWriteHrefInDetail(org.powerloom.PrintableStringWriter stream, String target, String action, String objecttype, String contextname, String objectname, String objecttitle, boolean rawtitleP) {
     OntosaurusUtil.htmlWrite3PartHrefInDetail(stream, target, action, objecttype, contextname, objectname, "", objecttitle, "", rawtitleP);
   }
 
-  public static void htmlWriteHref(java.io.PrintStream stream, String action, String objecttype, StandardObject renamed_Object) {
+  public static void htmlWriteHref(org.powerloom.PrintableStringWriter stream, String action, String objecttype, StandardObject renamed_Object) {
     { Surrogate testValue000 = Stella_Object.safePrimaryType(renamed_Object);
 
       if (Surrogate.subtypeOfP(testValue000, OntosaurusUtil.SGT_LOGIC_LOGIC_OBJECT)) {
@@ -539,7 +539,7 @@ public class OntosaurusUtil {
     return;
   }
 
-  public static void htmlWriteUrl(java.io.PrintStream stream, String action, StandardObject renamed_Object) {
+  public static void htmlWriteUrl(org.powerloom.PrintableStringWriter stream, String action, StandardObject renamed_Object) {
     { String objecttype = null;
 
       { Surrogate testValue000 = Stella_Object.safePrimaryType(renamed_Object);
@@ -580,7 +580,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlWriteJavascript(java.io.PrintStream stream, String js) {
+  public static void htmlWriteJavascript(org.powerloom.PrintableStringWriter stream, String js) {
     {
       stream.println("<SCRIPT LANGUAGE=\"JAVASCRIPT\"><!-- Hide from old browsers");
       stream.println(js);
@@ -591,7 +591,7 @@ public class OntosaurusUtil {
     return;
   }
 
-  public static void htmlWriteHeaderWithTable(java.io.PrintStream stream, String title, String head) {
+  public static void htmlWriteHeaderWithTable(org.powerloom.PrintableStringWriter stream, String title, String head) {
     {
       stream.print("<TABLE WIDTH='100%'>");
       stream.println();
@@ -622,11 +622,11 @@ public class OntosaurusUtil {
     return;
   }
 
-  public static void writeBookmarkIcon(LogicObject instance, java.io.PrintStream stream) {
+  public static void writeBookmarkIcon(LogicObject instance, org.powerloom.PrintableStringWriter stream) {
     OntosaurusUtil.htmlWriteHrefInDetail(stream, "bookmark", "bookmark", "object", instance.homeModule().name(), Logic.objectName(instance).visibleName(true), "<IMG SRC='/ploom/icons/bookmark.gif' ALT='&lt;mark&gt;' BORDER='0' WIDTH='14' HEIGHT='15' />&nbsp;Bookmark</A>", true);
   }
 
-  public static void htmlEmitImage(java.io.PrintStream stream, String imageurl, String alternatetext, int width, int height, String alignment, int border) {
+  public static void htmlEmitImage(org.powerloom.PrintableStringWriter stream, String imageurl, String alternatetext, int width, int height, String alignment, int border) {
     stream.print("<IMG SRC='" + imageurl + "'");
     if (alternatetext != null) {
       stream.print(" ALT='" + alternatetext + "'");
@@ -649,7 +649,7 @@ public class OntosaurusUtil {
     return;
   }
 
-  public static void htmlDisplayStringInParagraphs(String s, java.io.PrintStream stream) {
+  public static void htmlDisplayStringInParagraphs(String s, org.powerloom.PrintableStringWriter stream) {
     { int start = 0;
       int pos = 0;
 
@@ -667,11 +667,11 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void writePowerloomTrailer(java.io.PrintStream stream) {
+  public static void writePowerloomTrailer(org.powerloom.PrintableStringWriter stream) {
     stream.print(OntosaurusUtil.$POWERLOOM_COPYRIGHT_TRAILER$);
   }
 
-  public static void pprintNewline(java.io.PrintStream stream) {
+  public static void pprintNewline(org.powerloom.PrintableStringWriter stream) {
     stream.println();
     { int i = Stella.NULL_INTEGER;
       int iter000 = 1;
@@ -687,7 +687,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintAtomicObject(Stella_Object self, java.io.PrintStream stream) {
+  public static void pprintAtomicObject(Stella_Object self, org.powerloom.PrintableStringWriter stream) {
     if (!(self == null)) {
       { Surrogate testValue000 = Stella_Object.safePrimaryType(self);
 
@@ -786,7 +786,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintLiteralWrapper(LiteralWrapper self, java.io.PrintStream stream) {
+  public static void pprintLiteralWrapper(LiteralWrapper self, org.powerloom.PrintableStringWriter stream) {
     { Surrogate testValue000 = Stella_Object.safePrimaryType(self);
 
       if (Surrogate.subtypeOfBooleanP(testValue000)) {
@@ -884,7 +884,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintCompositeObject(Stella_Object self, java.io.PrintStream stream) {
+  public static void pprintCompositeObject(Stella_Object self, org.powerloom.PrintableStringWriter stream) {
     { Surrogate testValue000 = Stella_Object.safePrimaryType(self);
 
       if (Surrogate.subtypeOfP(testValue000, OntosaurusUtil.SGT_LOGIC_PROPOSITION)) {
@@ -917,7 +917,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintObject(Stella_Object self, java.io.PrintStream stream) {
+  public static void pprintObject(Stella_Object self, org.powerloom.PrintableStringWriter stream) {
     if (self == null) {
     }
     else if (!OntosaurusUtil.pprintAsAtomicObjectP(self)) {
@@ -931,7 +931,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintArguments(Vector arguments, boolean separatelinesP, boolean omitlastargumentP, java.io.PrintStream stream) {
+  public static void pprintArguments(Vector arguments, boolean separatelinesP, boolean omitlastargumentP, org.powerloom.PrintableStringWriter stream) {
     if (arguments == null) {
       return;
     }
@@ -1077,7 +1077,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintOperatorWithArguments(String operatorname, Vector arguments, boolean separatelinesP, boolean omitlastargumentP, java.io.PrintStream stream) {
+  public static void pprintOperatorWithArguments(String operatorname, Vector arguments, boolean separatelinesP, boolean omitlastargumentP, org.powerloom.PrintableStringWriter stream) {
     { int operatorindent = operatorname.length() + 2;
 
       stream.print("(" + operatorname + " ");
@@ -1088,7 +1088,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintRelationProposition(Proposition self, java.io.PrintStream stream) {
+  public static void pprintRelationProposition(Proposition self, org.powerloom.PrintableStringWriter stream) {
     { int nargs = self.arguments.length();
 
       stream.print("(");
@@ -1160,7 +1160,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintFunctionTerm(Proposition self, java.io.PrintStream stream) {
+  public static void pprintFunctionTerm(Proposition self, org.powerloom.PrintableStringWriter stream) {
     stream.print("(");
     OntosaurusUtil.pprintObject(self.operator, stream);
     { boolean testValue000 = false;
@@ -1232,7 +1232,7 @@ public class OntosaurusUtil {
     stream.print(")");
   }
 
-  public static void pprintFunctionProposition(Proposition self, java.io.PrintStream stream) {
+  public static void pprintFunctionProposition(Proposition self, org.powerloom.PrintableStringWriter stream) {
     { Stella_Object lastarg = self.arguments.last();
 
       stream.print("(= ");
@@ -1250,7 +1250,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintProposition(Proposition self, java.io.PrintStream stream) {
+  public static void pprintProposition(Proposition self, org.powerloom.PrintableStringWriter stream) {
     if (((java.lang.reflect.Method)(OntosaurusUtil.$PPRINT_BEFORE_PROPOSITION_FUNCTION$.get())) != null) {
       edu.isi.stella.javalib.Native.funcall(((java.lang.reflect.Method)(OntosaurusUtil.$PPRINT_BEFORE_PROPOSITION_FUNCTION$.get())), null, new java.lang.Object [] {self, stream});
     }
@@ -1359,7 +1359,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintQuantifiedVariables(Vector variables, boolean includetypesP, java.io.PrintStream stream) {
+  public static void pprintQuantifiedVariables(Vector variables, boolean includetypesP, org.powerloom.PrintableStringWriter stream) {
     if (variables == null) {
       return;
     }
@@ -1418,7 +1418,7 @@ public class OntosaurusUtil {
     stream.print(")");
   }
 
-  public static void pprintNamedDescription(NamedDescription self, java.io.PrintStream stream) {
+  public static void pprintNamedDescription(NamedDescription self, org.powerloom.PrintableStringWriter stream) {
     if (((java.lang.reflect.Method)(OntosaurusUtil.$PPRINT_ATOMIC_OBJECT_RENDERER$.get())) != null) {
       edu.isi.stella.javalib.Native.funcall(((java.lang.reflect.Method)(OntosaurusUtil.$PPRINT_ATOMIC_OBJECT_RENDERER$.get())), null, new java.lang.Object [] {self, stream});
     }
@@ -1427,7 +1427,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintDescription(Description self, java.io.PrintStream stream) {
+  public static void pprintDescription(Description self, org.powerloom.PrintableStringWriter stream) {
     if (Description.namedDescriptionP(self)) {
       OntosaurusUtil.pprintNamedDescription(((NamedDescription)(self)), stream);
     }
@@ -1449,7 +1449,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintDescriptionBody(Description description, java.io.PrintStream stream) {
+  public static void pprintDescriptionBody(Description description, org.powerloom.PrintableStringWriter stream) {
     if (description.proposition == null) {
       stream.print("(");
       OntosaurusUtil.pprintObject(description.surrogateValueInverse, stream);
@@ -1491,7 +1491,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintNamedDescriptionsAsRule(NamedDescription head, NamedDescription tail, String operatorprefix, java.io.PrintStream stream) {
+  public static void pprintNamedDescriptionsAsRule(NamedDescription head, NamedDescription tail, String operatorprefix, org.powerloom.PrintableStringWriter stream) {
     { int operatorindent = operatorprefix.length() + 2;
       Cons variables = Stella.NIL;
 
@@ -1567,7 +1567,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void helpPprintDescriptionsAsRule(Description desc, java.io.PrintStream stream) {
+  public static void helpPprintDescriptionsAsRule(Description desc, org.powerloom.PrintableStringWriter stream) {
     { Vector existentials = Logic.copyConsListToVariablesVector(Description.topLevelExistentialVariables(desc));
       boolean existentialvariablesP = existentials.nonEmptyP();
 
@@ -1586,7 +1586,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintDescriptionsAsRule(Description head, Description tail, Proposition rule, java.io.PrintStream stream) {
+  public static void pprintDescriptionsAsRule(Description head, Description tail, Proposition rule, org.powerloom.PrintableStringWriter stream) {
     { Vector headvariables = null;
       Vector tailvariables = null;
       boolean forwardruleP = ((BooleanWrapper)(KeyValueList.dynamicSlotValue(rule.dynamicSlots, OntosaurusUtil.SYM_LOGIC_FORWARD_ONLYp, Stella.FALSE_WRAPPER))).wrapperValue;
@@ -1681,7 +1681,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintImpliesProposition(Proposition self, java.io.PrintStream stream) {
+  public static void pprintImpliesProposition(Proposition self, org.powerloom.PrintableStringWriter stream) {
     { Stella_Object tailarg = (self.arguments.theArray)[0];
       Stella_Object headarg = (self.arguments.theArray)[1];
 
@@ -1695,7 +1695,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintStellaCollection(Collection self, java.io.PrintStream stream) {
+  public static void pprintStellaCollection(Collection self, org.powerloom.PrintableStringWriter stream) {
     { boolean setP = self.noDuplicatesP();
       boolean firstP = true;
 
@@ -1766,7 +1766,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintStellaCons(Cons self, java.io.PrintStream stream) {
+  public static void pprintStellaCons(Cons self, org.powerloom.PrintableStringWriter stream) {
     stream.print("(");
     Native.setIntSpecial(OntosaurusUtil.$PPRINT_INDENT$, ((Integer)(OntosaurusUtil.$PPRINT_INDENT$.get())).intValue() + 1);
     switch (self.length()) {
@@ -1822,7 +1822,7 @@ public class OntosaurusUtil {
     Native.setIntSpecial(OntosaurusUtil.$PPRINT_INDENT$, ((Integer)(OntosaurusUtil.$PPRINT_INDENT$.get())).intValue() - 1);
   }
 
-  public static void pprintDefinition(Cons self, boolean hasvariablesP, java.io.PrintStream stream) {
+  public static void pprintDefinition(Cons self, boolean hasvariablesP, org.powerloom.PrintableStringWriter stream) {
     if (((java.lang.reflect.Method)(OntosaurusUtil.$PPRINT_BEFORE_DEFINITION_FUNCTION$.get())) != null) {
       edu.isi.stella.javalib.Native.funcall(((java.lang.reflect.Method)(OntosaurusUtil.$PPRINT_BEFORE_DEFINITION_FUNCTION$.get())), null, new java.lang.Object [] {self, stream});
     }
@@ -1874,7 +1874,7 @@ public class OntosaurusUtil {
 
       try {
         Native.setSpecial(Logic.$LOGIC_DIALECT$, OntosaurusUtil.KWD_KIF);
-        Native.setSpecial(OntosaurusUtil.$PPRINT_ATOMIC_OBJECT_RENDERER$, Native.find_java_method("edu.isi.ontosaurus.OntosaurusUtil", "pprintAtomicObjectForHtml", new java.lang.Class [] {Native.find_java_class("edu.isi.stella.Stella_Object"), Native.find_java_class("java.io.PrintStream")}));
+        Native.setSpecial(OntosaurusUtil.$PPRINT_ATOMIC_OBJECT_RENDERER$, Native.find_java_method("edu.isi.ontosaurus.OntosaurusUtil", "pprintAtomicObjectForHtml", new java.lang.Class [] {Native.find_java_class("edu.isi.stella.Stella_Object"), Native.find_java_class("org.powerloom.PrintableStringWriter")}));
         if (Surrogate.subtypeOfP(Stella_Object.safePrimaryType(self), OntosaurusUtil.SGT_LOGIC_PROPOSITION)) {
           { Proposition self000 = ((Proposition)(self));
 
@@ -1909,7 +1909,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintAtomicObjectForHtmlDefinition(Stella_Object self, java.io.PrintStream stream) {
+  public static void pprintAtomicObjectForHtmlDefinition(Stella_Object self, org.powerloom.PrintableStringWriter stream) {
     if (!(self == null)) {
       if (Surrogate.subtypeOfSymbolP(Stella_Object.safePrimaryType(self))) {
         { Symbol self000 = ((Symbol)(self));
@@ -1931,7 +1931,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintAtomicObjectForHtml(Stella_Object self, java.io.PrintStream stream) {
+  public static void pprintAtomicObjectForHtml(Stella_Object self, org.powerloom.PrintableStringWriter stream) {
     if (!(self == null)) {
       { Surrogate testValue000 = Stella_Object.safePrimaryType(self);
 
@@ -2045,7 +2045,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void pprintLiteralWrapperForHtml(LiteralWrapper self, java.io.PrintStream stream) {
+  public static void pprintLiteralWrapperForHtml(LiteralWrapper self, org.powerloom.PrintableStringWriter stream) {
     { Surrogate testValue000 = Stella_Object.safePrimaryType(self);
 
       if (Surrogate.subtypeOfBooleanP(testValue000)) {
@@ -2122,11 +2122,11 @@ public class OntosaurusUtil {
    * @param theObject
    * @param nativestream
    */
-  public static void printOntosaurusUrl(LogicObject theObject, java.io.PrintStream nativestream) {
+  public static void printOntosaurusUrl(LogicObject theObject, org.powerloom.PrintableStringWriter nativestream) {
     OntosaurusUtil.htmlWriteHref(nativestream, ((String)(OntosaurusUtil.$ONTOSAURUS_URL_ACTION$.get())), OntosaurusUtil.logicObjectDisplayType(theObject), theObject);
   }
 
-  public static void writeControlPanelScript(java.io.PrintStream stream) {
+  public static void writeControlPanelScript(org.powerloom.PrintableStringWriter stream) {
     {
       stream.println("<SCRIPT LANGUAGE='JavaScript'>");
       stream.println("<!-- Hide from non-javascript browsers");
@@ -2356,7 +2356,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeLocation(LogicObject self, java.io.PrintStream stream) {
+  public static void htmlDescribeLocation(LogicObject self, org.powerloom.PrintableStringWriter stream) {
     {
       stream.print("<PRE>");
       stream.print(OntosaurusUtil.lookupTerm(OntosaurusUtil.KWD_CONTEXT, true, false) + ": ");
@@ -2380,7 +2380,7 @@ public class OntosaurusUtil {
     return;
   }
 
-  public static void htmlWriteContextViewOption(java.io.PrintStream stream, String objectname, Module ctx) {
+  public static void htmlWriteContextViewOption(org.powerloom.PrintableStringWriter stream, String objectname, Module ctx) {
     stream.print("<option VALUE=\"do-action?show+object+");
     Stella.writeHtmlEscapingUrlSpecialCharacters(stream, ctx.name());
     stream.print("+");
@@ -2395,7 +2395,7 @@ public class OntosaurusUtil {
     return;
   }
 
-  public static void htmlDescribeContextView(LogicObject self, java.io.PrintStream stream) {
+  public static void htmlDescribeContextView(LogicObject self, org.powerloom.PrintableStringWriter stream) {
     { Module homec = self.homeModule();
       String objectname = edu.isi.powerloom.PLI.getName(self);
       AllPurposeIterator contextlist = Context.allSubcontexts(homec, OntosaurusUtil.KWD_PREORDER);
@@ -2428,7 +2428,7 @@ public class OntosaurusUtil {
     return;
   }
 
-  public static void htmlDisplayImages(StandardObject self, java.io.PrintStream stream) {
+  public static void htmlDisplayImages(StandardObject self, org.powerloom.PrintableStringWriter stream) {
     { boolean firstP = true;
       edu.isi.powerloom.PlIterator images = edu.isi.powerloom.PLI.getInferredBinaryPropositionValues(OntosaurusUtil.$IMAGE_URL_RELATION$, self, null, null);
 
@@ -2457,7 +2457,7 @@ public class OntosaurusUtil {
     return;
   }
 
-  public static void htmlDisplayDocumentation(StandardObject self, java.io.PrintStream stream) {
+  public static void htmlDisplayDocumentation(StandardObject self, org.powerloom.PrintableStringWriter stream) {
     { edu.isi.powerloom.PlIterator docstrings = edu.isi.powerloom.PLI.getInferredBinaryPropositionValues(OntosaurusUtil.$DOCUMENTATION_RELATION$, self, null, null);
 
       if (docstrings != null) {
@@ -2489,7 +2489,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDisplaySynonyms(Stella_Object self, java.io.PrintStream stream) {
+  public static void htmlDisplaySynonyms(Stella_Object self, org.powerloom.PrintableStringWriter stream) {
     { Cons synonyms = Logic.getSynonyms(self);
 
       if (!(synonyms == Stella.NIL)) {
@@ -2516,7 +2516,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeEquivalents(String title, String head, NamedDescription relation, java.io.PrintStream stream, boolean ruleP) {
+  public static void htmlDescribeEquivalents(String title, String head, NamedDescription relation, org.powerloom.PrintableStringWriter stream, boolean ruleP) {
     { Cons equivalents = Cons.copyConsList(NamedDescription.allEquivalentRelations(relation, true));
 
       if (!(equivalents.rest == Stella.NIL)) {
@@ -2540,7 +2540,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeOneSubLevel(NamedDescription renamed_Object, int depth, int cutoff, java.io.PrintStream stream) {
+  public static void htmlDescribeOneSubLevel(NamedDescription renamed_Object, int depth, int cutoff, org.powerloom.PrintableStringWriter stream) {
     { Cons directsubs = edu.isi.powerloom.PLI.getDirectSubrelations(renamed_Object, null, null).consify();
 
       if (directsubs == Stella.NIL) {
@@ -2578,7 +2578,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeSubs(String title, String head, NamedDescription relation, java.io.PrintStream stream, boolean ruleP) {
+  public static void htmlDescribeSubs(String title, String head, NamedDescription relation, org.powerloom.PrintableStringWriter stream, boolean ruleP) {
     { int heuristicdepth = 4;
       int sublength = edu.isi.powerloom.PLI.getDirectSubrelations(relation, null, null).length();
 
@@ -2603,7 +2603,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeOneSuperLevel(Cons directsupers, HashTable alreadyoutput, java.io.PrintStream stream) {
+  public static void htmlDescribeOneSuperLevel(Cons directsupers, HashTable alreadyoutput, org.powerloom.PrintableStringWriter stream) {
     { boolean alreadyoutputP = false;
 
       if (directsupers == Stella.NIL) {
@@ -2642,7 +2642,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeSupers(String title, String head, NamedDescription relation, java.io.PrintStream stream, boolean ruleP) {
+  public static void htmlDescribeSupers(String title, String head, NamedDescription relation, org.powerloom.PrintableStringWriter stream, boolean ruleP) {
     { HashTable alreadyoutput = HashTable.newHashTable();
       Cons directsupers = edu.isi.powerloom.PLI.getDirectSuperrelations(relation, null, null).consify();
 
@@ -2664,7 +2664,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeTypes(String title, String head, LogicObject relation, java.io.PrintStream stream, boolean ruleP) {
+  public static void htmlDescribeTypes(String title, String head, LogicObject relation, org.powerloom.PrintableStringWriter stream, boolean ruleP) {
     { HashTable alreadyoutput = HashTable.newHashTable();
       Cons types = edu.isi.powerloom.PLI.getDirectTypes(relation, null, null).consify();
 
@@ -2686,7 +2686,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeOneParentWithSiblings(NamedDescription parent, NamedDescription child, java.io.PrintStream stream) {
+  public static void htmlDescribeOneParentWithSiblings(NamedDescription parent, NamedDescription child, org.powerloom.PrintableStringWriter stream) {
     { Cons directsubs = edu.isi.powerloom.PLI.getDirectSubrelations(parent, null, null).consify();
 
       directsubs = directsubs.sort(Native.find_java_method("edu.isi.powerloom.logic.LogicObject", "objectNameLessThanP", new java.lang.Class [] {Native.find_java_class("edu.isi.powerloom.logic.LogicObject"), Native.find_java_class("edu.isi.powerloom.logic.LogicObject")}));
@@ -2728,7 +2728,7 @@ public class OntosaurusUtil {
     return (false);
   }
 
-  public static void htmlDescribeSiblings(String title, String head, NamedDescription relation, java.io.PrintStream stream, boolean ruleP) {
+  public static void htmlDescribeSiblings(String title, String head, NamedDescription relation, org.powerloom.PrintableStringWriter stream, boolean ruleP) {
     { Cons parentsofsibs = Stella.NIL;
 
       { LogicObject p = null;
@@ -2788,7 +2788,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeRules(String title, String head, LogicObject relation, java.io.PrintStream stream, boolean ruleP) {
+  public static void htmlDescribeRules(String title, String head, LogicObject relation, org.powerloom.PrintableStringWriter stream, boolean ruleP) {
     { Cons rules = edu.isi.powerloom.PLI.getRules(relation, null, null).consify();
       boolean ruleWrittenP = false;
 
@@ -2832,7 +2832,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeFacts(String title, String head, LogicObject relation, java.io.PrintStream stream, boolean filterRulesP, boolean ruleP) {
+  public static void htmlDescribeFacts(String title, String head, LogicObject relation, org.powerloom.PrintableStringWriter stream, boolean filterRulesP, boolean ruleP) {
     { Cons facts = edu.isi.powerloom.PLI.getPropositionsOf(relation, null, null).consify();
       boolean factWrittenP = false;
 
@@ -2881,7 +2881,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeInstances(String title, String head, NamedDescription relation, java.io.PrintStream stream, boolean ruleP) {
+  public static void htmlDescribeInstances(String title, String head, NamedDescription relation, org.powerloom.PrintableStringWriter stream, boolean ruleP) {
     { Cons instances = edu.isi.powerloom.PLI.getConceptInstances(relation, null, null).consify();
       Cons assertedinstances = Logic.ASSERTION_INFERENCE.levellizedAllClassInstances(relation.surrogateValueInverse);
       Cons directinstances = edu.isi.powerloom.PLI.getDirectConceptInstances(relation, null, null).consify();
@@ -2937,7 +2937,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeTuples(String title, String head, NamedDescription relation, java.io.PrintStream stream, boolean ruleP) {
+  public static void htmlDescribeTuples(String title, String head, NamedDescription relation, org.powerloom.PrintableStringWriter stream, boolean ruleP) {
     { Cons tuples = edu.isi.powerloom.PLI.getRelationExtension(relation, null, null).consify();
 
       OntosaurusUtil.htmlWriteHeaderWithTable(stream, title, head);
@@ -2975,7 +2975,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeNamedDescription(NamedDescription concept, java.io.PrintStream stream) {
+  public static void htmlDescribeNamedDescription(NamedDescription concept, org.powerloom.PrintableStringWriter stream) {
     if (!(concept != null)) {
       return;
     }
@@ -3035,7 +3035,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeInstance(LogicObject instance, java.io.PrintStream stream) {
+  public static void htmlDescribeInstance(LogicObject instance, org.powerloom.PrintableStringWriter stream) {
     if (!(instance != null)) {
       return;
     }
@@ -3113,7 +3113,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeOneModuleSubLevel(Module module, int depth, int cutoff, java.io.PrintStream stream) {
+  public static void htmlDescribeOneModuleSubLevel(Module module, int depth, int cutoff, org.powerloom.PrintableStringWriter stream) {
     { Cons directsubmodules = OntosaurusUtil.childModules(module);
 
       if (directsubmodules == Stella.NIL) {
@@ -3151,7 +3151,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeModuleSubs(String title, String head, Module module, java.io.PrintStream stream, boolean ruleP) {
+  public static void htmlDescribeModuleSubs(String title, String head, Module module, org.powerloom.PrintableStringWriter stream, boolean ruleP) {
     { int heuristicdepth = 4;
       int sublength = OntosaurusUtil.childModules(module).length();
 
@@ -3176,7 +3176,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeOneModuleSuperLevel(Module module, HashTable alreadyoutput, java.io.PrintStream stream) {
+  public static void htmlDescribeOneModuleSuperLevel(Module module, HashTable alreadyoutput, org.powerloom.PrintableStringWriter stream) {
     { Cons parents = Cons.copyConsList(module.parentModules.theConsList).sort(Native.find_java_method("edu.isi.powerloom.logic.Logic", "moduleNameLessThanP", new java.lang.Class [] {Native.find_java_class("edu.isi.stella.Context"), Native.find_java_class("edu.isi.stella.Context")}));
       boolean alreadyoutputP = false;
 
@@ -3215,7 +3215,7 @@ public class OntosaurusUtil {
     return;
   }
 
-  public static void htmlDescribeModuleSupers(String title, String head, Module module, java.io.PrintStream stream, boolean ruleP) {
+  public static void htmlDescribeModuleSupers(String title, String head, Module module, org.powerloom.PrintableStringWriter stream, boolean ruleP) {
     { HashTable alreadyoutput = HashTable.newHashTable();
 
       OntosaurusUtil.htmlWriteHeaderWithTable(stream, title, head);
@@ -3236,7 +3236,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDisplayModuleStats(String title, String head, Module module, java.io.PrintStream stream, boolean ruleP) {
+  public static void htmlDisplayModuleStats(String title, String head, Module module, org.powerloom.PrintableStringWriter stream, boolean ruleP) {
     { int nconcepts = 0;
       int nrelations = 0;
       int ninstances = 0;
@@ -3336,7 +3336,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlDescribeModule(Module module, java.io.PrintStream stream) {
+  public static void htmlDescribeModule(Module module, org.powerloom.PrintableStringWriter stream) {
     if (!(module != null)) {
       return;
     }
@@ -3356,7 +3356,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlUnknownModuleResponse(Keyword itemtype, String itemname, String modulename, java.io.PrintStream stream) {
+  public static void htmlUnknownModuleResponse(Keyword itemtype, String itemname, String modulename, org.powerloom.PrintableStringWriter stream) {
     {
       stream.print("<HTML>");
       {
@@ -3395,7 +3395,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlUnknownObjectResponse(Keyword itemtype, String itemname, java.io.PrintStream stream) {
+  public static void htmlUnknownObjectResponse(Keyword itemtype, String itemname, org.powerloom.PrintableStringWriter stream) {
     {
       stream.print("<HTML>");
       {
@@ -3436,7 +3436,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlWriteRelationResponsePage(NamedDescription relation, java.io.PrintStream stream) {
+  public static void htmlWriteRelationResponsePage(NamedDescription relation, org.powerloom.PrintableStringWriter stream) {
     { String objectname = Logic.objectNameString(relation);
 
       {
@@ -3471,7 +3471,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlWriteInstanceResponsePage(LogicObject instance, java.io.PrintStream stream) {
+  public static void htmlWriteInstanceResponsePage(LogicObject instance, org.powerloom.PrintableStringWriter stream) {
     { String objectname = Logic.objectNameString(instance);
 
       {
@@ -3506,7 +3506,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlWriteObjectResponsePageInternal(Stella_Object renamed_Object, java.io.PrintStream stream) {
+  public static void htmlWriteObjectResponsePageInternal(Stella_Object renamed_Object, org.powerloom.PrintableStringWriter stream) {
     { String objectname = Logic.objectNameString(renamed_Object);
 
       if (objectname == null) {
@@ -3546,7 +3546,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlWriteModuleResponsePageInternal(Module module, java.io.PrintStream stream) {
+  public static void htmlWriteModuleResponsePageInternal(Module module, org.powerloom.PrintableStringWriter stream) {
     { String modulename = module.name();
 
       {
@@ -3581,7 +3581,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlWriteModuleResponsePage(String modulename, java.io.PrintStream stream) {
+  public static void htmlWriteModuleResponsePage(String modulename, org.powerloom.PrintableStringWriter stream) {
     { Module module = Stella.getStellaModule(modulename, false);
 
       if (module == null) {
@@ -3605,7 +3605,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlWriteObjectResponsePage(String modulename, String objectname, java.io.PrintStream stream) {
+  public static void htmlWriteObjectResponsePage(String modulename, String objectname, org.powerloom.PrintableStringWriter stream) {
     { Module module = Stella.getStellaModule(modulename, false);
 
       if (module == null) {
@@ -3819,7 +3819,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlWriteFindObjectResponsePage(String modulename, String objectname, String objecttype, Keyword matchtype, java.io.PrintStream stream) {
+  public static void htmlWriteFindObjectResponsePage(String modulename, String objectname, String objecttype, Keyword matchtype, org.powerloom.PrintableStringWriter stream) {
     { Module module = Stella.getStellaModule(modulename, false);
 
       if (module == null) {
@@ -3866,7 +3866,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlWriteMultipleChoicePage(String searchstring, List candidateobjects, java.io.PrintStream stream) {
+  public static void htmlWriteMultipleChoicePage(String searchstring, List candidateobjects, org.powerloom.PrintableStringWriter stream) {
     {
       stream.print("<HTML>");
       {
@@ -3926,7 +3926,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlPowerloomResponse(String action, String objecttype, String modulename, String objectname, java.io.PrintStream stream) {
+  public static void htmlPowerloomResponse(String action, String objecttype, String modulename, String objectname, org.powerloom.PrintableStringWriter stream) {
     { Object old$PprintAtomicObjectRenderer$000 = OntosaurusUtil.$PPRINT_ATOMIC_OBJECT_RENDERER$.get();
       Object old$PprintIndent$000 = OntosaurusUtil.$PPRINT_INDENT$.get();
       Object old$PrintreadablyP$000 = Stella.$PRINTREADABLYp$.get();
@@ -4029,7 +4029,7 @@ public class OntosaurusUtil {
       StringWrapper objecttype = ((StringWrapper)(keys.rest.value));
       StringWrapper modulename = ((StringWrapper)(keys.rest.rest.value));
       StringWrapper objectname = ((StringWrapper)(keys.fourth()));
-      java.io.PrintStream stream = edu.isi.webtools.http.HttpExchange.getReplyStream(xchg);
+      org.powerloom.PrintableStringWriter stream = edu.isi.webtools.http.HttpExchange.getReplyStream(xchg);
 
       if (keys.length() >= 4) {
         if (Stella.startsWithP(action.wrapperValue, "graph", 0)) {
@@ -4099,7 +4099,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void serveControlPanelInternal(java.io.PrintStream stream) {
+  public static void serveControlPanelInternal(org.powerloom.PrintableStringWriter stream) {
     {
       stream.print("<HTML>");
       {
@@ -4125,7 +4125,7 @@ public class OntosaurusUtil {
     return;
   }
 
-  public static void writeTheorySection(java.io.PrintStream stream) {
+  public static void writeTheorySection(org.powerloom.PrintableStringWriter stream) {
     stream.print("<b>" + OntosaurusUtil.lookupTerm(OntosaurusUtil.KWD_CONTEXT, true, false) + ":</b>&nbsp;");
     stream.println("<SELECT NAME=\"theory\" onChange='document.cookie=\"theory=\" + this[this.selectedIndex].value + \";\";'>");
     { StringWrapper c = null;
@@ -4140,7 +4140,7 @@ public class OntosaurusUtil {
     return;
   }
 
-  public static void writeTopSection(java.io.PrintStream stream) {
+  public static void writeTopSection(org.powerloom.PrintableStringWriter stream) {
     {
       stream.println("<FORM NAME=\"navform\" TARGET=\"content\" METHOD=\"POST\" onSubmit=\"return formTest(this)\">");
       stream.println("<TABLE BORDER>");
@@ -4154,7 +4154,7 @@ public class OntosaurusUtil {
     return;
   }
 
-  public static void writeBottomSection(java.io.PrintStream stream) {
+  public static void writeBottomSection(org.powerloom.PrintableStringWriter stream) {
     stream.print("<input TYPE=button  NAME=\"show\" VALUE=\"Show\" onClick=\"loadContextURL('content', 'show', this.form)\">\n");
     if (OntosaurusUtil.savingAllowedP()) {
       stream.print("<input TYPE=button  NAME=\"save\" VALUE=\"Save...\" onClick=\"loadContextURL('content', 'save',this.form)\">\n");
@@ -4264,7 +4264,7 @@ public class OntosaurusUtil {
     return;
   }
 
-  public static void serveControlPanelNeedsJavascript(java.io.PrintStream stream) {
+  public static void serveControlPanelNeedsJavascript(org.powerloom.PrintableStringWriter stream) {
     {
       stream.print("<HTML>");
       stream.println();
@@ -4306,7 +4306,7 @@ public class OntosaurusUtil {
   }
 
   public static void controlPanelHandler(edu.isi.webtools.http.HttpExchange xchg) {
-    { java.io.PrintStream stream = edu.isi.webtools.http.HttpExchange.getReplyStream(xchg);
+    { org.powerloom.PrintableStringWriter stream = edu.isi.webtools.http.HttpExchange.getReplyStream(xchg);
 
       if (edu.isi.webtools.http.HttpExchange.getRequestMethod(xchg) == OntosaurusUtil.KWD_GET) {
         OntosaurusUtil.serveControlPanelInternal(stream);
@@ -4317,7 +4317,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlWriteQueryFormPage(java.io.PrintStream stream) {
+  public static void htmlWriteQueryFormPage(org.powerloom.PrintableStringWriter stream) {
     { OutputStream self000 = OutputStream.newOutputStream();
 
       self000.nativeStream = stream;
@@ -4483,7 +4483,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlExecuteQuery(KeyValueList querydata, java.io.PrintStream stream) {
+  public static void htmlExecuteQuery(KeyValueList querydata, org.powerloom.PrintableStringWriter stream) {
     { String modulename = ((StringWrapper)(querydata.lookup(StringWrapper.wrapString("MODULE")))).wrapperValue;
       Module module = Logic.getModule(StringWrapper.wrapString(modulename));
       StringWrapper nvalueentry = ((StringWrapper)(querydata.lookup(StringWrapper.wrapString("NANSWERS"))));
@@ -4530,7 +4530,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlExecuteAskQuery(Cons query, Cons options, Module mod, java.io.PrintStream stream) {
+  public static void htmlExecuteAskQuery(Cons query, Cons options, Module mod, org.powerloom.PrintableStringWriter stream) {
     { TruthValue answer = edu.isi.powerloom.PLI.ask(Cons.cons(query, options), mod, null);
 
       if ((answer == Logic.TRUE_TRUTH_VALUE) ||
@@ -4559,7 +4559,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlExecuteRetrieveQuery(int nvalues, Cons variables, Cons query, Cons options, Module mod, java.io.PrintStream stream) {
+  public static void htmlExecuteRetrieveQuery(int nvalues, Cons variables, Cons query, Cons options, Module mod, org.powerloom.PrintableStringWriter stream) {
     { Object old$PrintreadablyP$000 = Stella.$PRINTREADABLYp$.get();
 
       try {
@@ -4683,7 +4683,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void writeExplanationIcon(QueryIterator query, Cons bindings, java.io.PrintStream stream) {
+  public static void writeExplanationIcon(QueryIterator query, Cons bindings, org.powerloom.PrintableStringWriter stream) {
     { Module module = query.queryContext.baseModule;
       Description description = query.baseControlFrame.patternRecord.description;
       Vector existsvars = description.internalVariables;
@@ -4722,7 +4722,7 @@ public class OntosaurusUtil {
     }
   }
 
-  public static void htmlWriteExplanationResponsePage(String modulename, String query, java.io.PrintStream stream) {
+  public static void htmlWriteExplanationResponsePage(String modulename, String query, org.powerloom.PrintableStringWriter stream) {
     { Module module = Stella.getStellaModule(modulename, false);
 
       if (module == null) {
@@ -4793,7 +4793,7 @@ public class OntosaurusUtil {
   }
 
   public static void ploomQueryHandler(edu.isi.webtools.http.HttpExchange xchg) {
-    { java.io.PrintStream stream = edu.isi.webtools.http.HttpExchange.getReplyStream(xchg);
+    { org.powerloom.PrintableStringWriter stream = edu.isi.webtools.http.HttpExchange.getReplyStream(xchg);
       Keyword method = edu.isi.webtools.http.HttpExchange.getRequestMethod(xchg);
 
       if (method == OntosaurusUtil.KWD_GET) {
@@ -5088,7 +5088,7 @@ public class OntosaurusUtil {
         StringWrapper objecttype = ((StringWrapper)(keys.rest.value));
         StringWrapper modulename = ((StringWrapper)(keys.rest.rest.value));
         StringWrapper objectname = ((StringWrapper)(keys.fourth()));
-        java.io.PrintStream stream = edu.isi.webtools.http.HttpExchange.getReplyStream(xchg);
+        org.powerloom.PrintableStringWriter stream = edu.isi.webtools.http.HttpExchange.getReplyStream(xchg);
         Module module = edu.isi.powerloom.PLI.getModule(modulename.wrapperValue, null);
         Stella_Object visualizedobject = null;
         boolean generatemapP = OntosaurusUtil.$VIZ_SERVER_IMAGE_MAPS_ENABLEDp$ &&
@@ -5127,7 +5127,7 @@ public class OntosaurusUtil {
   }
 
   public static void vizServerServeImage(edu.isi.webtools.http.HttpExchange xchg, Stella_Object renamed_Object, Module module) {
-    { java.io.PrintStream stream = edu.isi.webtools.http.HttpExchange.getReplyStream(xchg);
+    { org.powerloom.PrintableStringWriter stream = edu.isi.webtools.http.HttpExchange.getReplyStream(xchg);
       String dotcommands = OntosaurusUtil.vizServerExportObject(renamed_Object, module);
       int dotexit = 0;
 
@@ -5150,7 +5150,7 @@ public class OntosaurusUtil {
 
   public static void vizServerServeImagePlusMap(edu.isi.webtools.http.HttpExchange xchg, Stella_Object renamed_Object, Module module) {
     { String uri = Stella.unescapeUrlString(edu.isi.webtools.http.HttpExchange.getRequestUri(xchg));
-      java.io.PrintStream stream = edu.isi.webtools.http.HttpExchange.getReplyStream(xchg);
+      org.powerloom.PrintableStringWriter stream = edu.isi.webtools.http.HttpExchange.getReplyStream(xchg);
       String dotcommands = OntosaurusUtil.vizServerExportObject(renamed_Object, module);
       String imagemap = null;
 

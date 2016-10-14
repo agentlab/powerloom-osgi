@@ -117,7 +117,7 @@ public class HttpServerSun extends HttpServer {
     }
   }
 
-  public java.io.PrintStream getReplyStreamImpl(HttpExchange xchg) {
+  public org.powerloom.PrintableStringWriter getReplyStreamImpl(HttpExchange xchg) {
     { HttpServerSun server = this;
 
       { HttpExchangeSun jxchg = ((HttpExchangeSun)(xchg));
@@ -127,7 +127,7 @@ public class HttpServerSun extends HttpServer {
           jstream = new edu.isi.stella.javalib.PrintStringStream();
           jxchg.replyStream = jstream;
         }
-        return (jstream);
+        return (new org.powerloom.PrintableStringWriter(jstream));
       }
     }
   }
@@ -163,7 +163,7 @@ public class HttpServerSun extends HttpServer {
 
         { InputStream self000 = InputStream.newInputStream();
 
-          self000.nativeStream = new java.io.PushbackInputStream(jxchg.getRequestBody());
+          self000.nativeStream = new org.powerloom.PushbackBufferedReader(jxchg.getRequestBody());
           self000.bufferingScheme = Sun.KWD_BLOCK;
           { InputStream bodystream = self000;
 

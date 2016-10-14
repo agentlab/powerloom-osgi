@@ -4946,7 +4946,7 @@ public class Stella {
 
       try {
         java.net.Socket s = new java.net.Socket(host, port);
-        in = new PushbackBufferedReader(new InputStreamReader(s.getInputStream()));
+        in = new PushbackBufferedReader(s.getInputStream());
         out = new PrintableStringWriter(s.getOutputStream());
       } catch (java.net.UnknownHostException uhe) {
         throw (InputOutputException) InputOutputException.newInputOutputException("Unknown host: " + host).fillInStackTrace();

@@ -176,7 +176,7 @@ public class InputFileStream extends InputStream {
       FileInputStream inputStream;
 	try {
 		inputStream = new FileInputStream(filename);
-		self.nativeStream = new PushbackBufferedReader(new InputStreamReader(inputStream, "utf8"));
+		self.nativeStream = new PushbackBufferedReader(inputStream, "utf8");
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

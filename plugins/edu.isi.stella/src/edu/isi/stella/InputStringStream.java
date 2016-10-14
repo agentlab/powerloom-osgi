@@ -78,7 +78,7 @@ public class InputStringStream extends InputStream {
   public static void initializeStringInputStream(InputStringStream self) {
     { String string = self.theString;
 
-      self.nativeStream = new PushbackBufferedReader(new InputStreamReader(new java.io.StringBufferInputStream(string)));
+      self.nativeStream = new PushbackBufferedReader(new java.io.StringBufferInputStream(string));
     }
   }
 

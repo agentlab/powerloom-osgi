@@ -19,5 +19,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: edu.isi.sdbc,
  edu.isi.stella,
  edu.isi.stella.javalib,
+ edu.isi.stella.utilities,
  org.powerloom
 Bundle-Vendor: AgentLab

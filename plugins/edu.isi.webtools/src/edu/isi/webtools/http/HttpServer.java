@@ -169,7 +169,7 @@ public abstract class HttpServer extends StandardObject {
     }
   }
 
-  public java.io.PrintStream getReplyStreamImpl(HttpExchange xchg) {
+  public org.powerloom.PrintableStringWriter getReplyStreamImpl(HttpExchange xchg) {
     { HttpServer server = this;
 
       xchg = xchg;

@@ -131,7 +131,7 @@ public class PowerLoomServerThread extends Thread {
       out.nativeStream = new PrintableStringWriter(socket.getOutputStream());
 
       in = edu.isi.stella.InputStream.newInputStream();
-      in.nativeStream = new PushbackBufferedReader(new InputStreamReader(socket.getInputStream()));
+      in.nativeStream = new PushbackBufferedReader(socket.getInputStream());
 
       Stella_Object inputObject, resultObject;
       String outputLine;

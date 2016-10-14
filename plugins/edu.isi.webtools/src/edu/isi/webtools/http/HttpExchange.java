@@ -47,6 +47,9 @@ package edu.isi.webtools.http;
 
 import edu.isi.stella.javalib.Native;
 import edu.isi.stella.javalib.StellaSpecialVariable;
+
+import org.powerloom.PrintableStringWriter;
+
 import edu.isi.stella.*;
 
 /** Abstract class that represents exchange objects that encapsulate all necessary
@@ -66,7 +69,7 @@ public abstract class HttpExchange extends StandardObject {
       String localhost = HttpExchange.getRequestLocalAddress(xchg);
       String remotehost = HttpExchange.getRequestRemoteAddress(xchg);
       String body = HttpExchange.getRequestBody(xchg);
-      java.io.PrintStream stream = HttpExchange.getReplyStream(xchg);
+      org.powerloom.PrintableStringWriter stream = HttpExchange.getReplyStream(xchg);
 
       if (method == Http.KWD_GET) {
         if (args.memberP(StringWrapper.wrapString("plain"))) {
@@ -117,7 +120,7 @@ public abstract class HttpExchange extends StandardObject {
   }
 
   public static void testHttpApiHandlerServeForm(HttpExchange xchg) {
-    { java.io.PrintStream stream = HttpExchange.getReplyStream(xchg);
+    { org.powerloom.PrintableStringWriter stream = HttpExchange.getReplyStream(xchg);
 
       stream.print("\n<FORM NAME=\"frank\" METHOD=\"POST\">\n<b>Execute Query</b><BR>\n<b>Theory:</b> <INPUT TYPE=\"text\" NAME=\"CONTEXT\" VALUE=\"INSPECT\" SIZE=40 ><BR>\n<b>Package:</b><INPUT TYPE=\"text\" NAME=\"PACKAGE\" VALUE=\"EXPECT\" SIZE=40 ><P>\n<b>Output Variable(s):</b><INPUT TYPE=\"text\" NAME=\"VARIABLES\" SIZE=60 ><P>\n<b>Query:</b><TEXTAREA NAME=\"QUERY\" ROWS=10 COLS=72 ></TEXTAREA><P>\n<INPUT TYPE=submit  NAME=\"submit\" VALUE=\"submit\">\n</FORM>");
     }
@@ -130,7 +133,7 @@ public abstract class HttpExchange extends StandardObject {
     { Cons arguments = Http.parseAndDecodeUrlArguments(HttpExchange.getRequestUriQuery(xchg), '+');
       StringWrapper systemname = ((StringWrapper)(arguments.value));
       Cons loadcommand = Cons.list$(Cons.cons(Http.SYM_STELLA_LOAD_SYSTEM, Cons.cons(systemname, Cons.cons(Stella.NIL, Stella.NIL))));
-      java.io.PrintStream stream = HttpExchange.getReplyStream(xchg);
+      org.powerloom.PrintableStringWriter stream = HttpExchange.getReplyStream(xchg);
 
       { StringWrapper arg = null;
         Cons iter000 = arguments.rest;
@@ -193,7 +196,7 @@ public abstract class HttpExchange extends StandardObject {
       String resolveduri = null;
       boolean isdirectoryP = false;
       String contenttype = Http.getHttpMimeType(Http.KWD_BINARY, null);
-      java.io.PrintStream stream = HttpExchange.getReplyStream(xchg);
+      org.powerloom.PrintableStringWriter stream = HttpExchange.getReplyStream(xchg);
 
       uripath = Stella.stringTrim(Stella.unescapeUrlString(uripath));
       isdirectoryP = Stella.endsWithP(uripath, "/", Stella.NULL_INTEGER);
@@ -257,7 +260,7 @@ public abstract class HttpExchange extends StandardObject {
       String path = ((StringWrapper)(options.lookup(Http.KWD_PATH))).wrapperValue;
       String file = ((StringWrapper)(options.lookup(Http.KWD_FILE))).wrapperValue;
       Stella_Object contenttype = options.lookupWithDefault(Http.KWD_CONTENT_TYPE, StringWrapper.wrapString(Http.getHttpMimeType(Http.KWD_HTML, null)));
-      java.io.PrintStream stream = HttpExchange.getReplyStream(xchg);
+      org.powerloom.PrintableStringWriter stream = HttpExchange.getReplyStream(xchg);
 
       uripath = Stella.stringTrim(Stella.unescapeUrlString(uripath));
       if (!Stella.stringEqlP(uripath, path)) {
@@ -286,7 +289,7 @@ public abstract class HttpExchange extends StandardObject {
   }
 
   public static void generateErrorResponse(HttpExchange xchg, Keyword code, String message) {
-    { java.io.PrintStream stream = HttpExchange.getReplyStream(xchg);
+    { org.powerloom.PrintableStringWriter stream = HttpExchange.getReplyStream(xchg);
 
       HttpExchange.setResponseCode(xchg, code);
       HttpExchange.setReplyHeaderValue(xchg, Http.KWD_CONTENT_TYPE, Http.getHttpMimeType(Http.KWD_HTML, null));
@@ -321,9 +324,9 @@ public abstract class HttpExchange extends StandardObject {
 
   /** Return the stream to which response methods have to write their output.
    * @param xchg
-   * @return java.io.PrintStream
+   * @return org.powerloom.PrintableStringWriter
    */
-  public static java.io.PrintStream getReplyStream(HttpExchange xchg) {
+  public static org.powerloom.PrintableStringWriter getReplyStream(HttpExchange xchg) {
     return (Http.$HTTP_SERVER_IMPLEMENTATION$.getReplyStreamImpl(xchg));
   }
 

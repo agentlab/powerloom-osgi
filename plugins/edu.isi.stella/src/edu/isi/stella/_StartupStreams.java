@@ -151,7 +151,7 @@ public class _StartupStreams {
       Stella.EOL = Stella.SYM_STELLA_EOL;
       { InputStream self000 = InputStream.newInputStream();
 
-        self000.nativeStream = new PushbackBufferedReader(new InputStreamReader(java.lang.System.in));
+        self000.nativeStream = new PushbackBufferedReader(java.lang.System.in);
         Stella.STANDARD_INPUT = self000;
       }
       Stella.$IGNORETRANSLATIONERRORSp$.setDefaultValue(new Boolean(true));
