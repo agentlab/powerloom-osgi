@@ -130,13 +130,14 @@
   </setupTask>
   <setupTask
       xsi:type="setup.workingsets:WorkingSetTask"
-      id="PowerLoom">
+      id="">
     <workingSet
-        name="PowerLoom">
+        name="${scope.project.name}">
       <predicate
           xsi:type="predicates:LocationPredicate"
           pattern=".*/powerloom-osgi/.*"/>
     </workingSet>
+    <description>The dynamic working sets for ${scope.project.label}</description>
   </setupTask>
   <setupTask
       xsi:type="mylyn:MylynQueriesTask"
