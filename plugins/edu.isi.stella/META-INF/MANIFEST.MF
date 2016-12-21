@@ -11,3 +11,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: AgentLab
 Import-Package: edu.isi.stella.javalib,
  org.powerloom
+DynamicImport-Package: *
